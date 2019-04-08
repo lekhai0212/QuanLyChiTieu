@@ -1,0 +1,17 @@
+/* 
+  Localizable.strings
+  QuanLyChiTieu
+
+  Created by lam quang quan on 4/8/19.
+  Copyright © 2019 KhaiLe. All rights reserved.
+*/
+
+"Login" = "Đăng nhập";
+"Email" = "Email";
+"Password" = "Mật khẩu";
+"Forgot password" = "Quên mật khẩu";
+"Register" = "Đăng ký";
+"Or" = "Hoặc";
+"Spend management" = "Quản lý chi tiêu";
+"Already have an account?" = "Đã có tài khoản đăng nhập?";
+"Register account" = "Đăng ký tài khoản";

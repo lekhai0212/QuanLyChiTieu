@@ -1,0 +1,21 @@
+
+/* Class = "UIButton"; normalTitle = "REGISTER"; ObjectID = "0CQ-Al-tjO"; */
+"0CQ-Al-tjO.normalTitle" = "REGISTER";
+
+/* Class = "UILabel"; text = "Or"; ObjectID = "7E8-LK-x9M"; */
+"7E8-LK-x9M.text" = "Or";
+
+/* Class = "UIButton"; normalTitle = "FORGOT PASSWORD"; ObjectID = "FV7-Qb-DPZ"; */
+"FV7-Qb-DPZ.normalTitle" = "FORGOT PASSWORD";
+
+/* Class = "UIButton"; normalTitle = "SignIn with Google"; ObjectID = "H5X-ti-WoH"; */
+"H5X-ti-WoH.normalTitle" = "SignIn with Google";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "TNe-Z4-jN1"; */
+"TNe-Z4-jN1.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "SignIn with Facebook"; ObjectID = "nCs-bZ-iaJ"; */
+"nCs-bZ-iaJ.normalTitle" = "SignIn with Facebook";
+
+/* Class = "UIButton"; normalTitle = "LOGIN"; ObjectID = "tq2-Ev-2wQ"; */
+"tq2-Ev-2wQ.normalTitle" = "LOGIN";

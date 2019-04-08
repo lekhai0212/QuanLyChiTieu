@@ -1,0 +1,16 @@
+/* 
+  Localizable.strings
+  QuanLyChiTieu
+
+  Created by lam quang quan on 4/8/19.
+  Copyright © 2019 KhaiLe. All rights reserved.
+*/
+"Login" = "Login";
+"Email" = "Email";
+"Password" = "Password";
+"Forgot password" = "Forgot password";
+"Register" = "Register";
+"Or" = "Or";
+"Spend management" = "Spend management";
+"Already have an account?" = "Already have an account?";
+"Register account" = "Register account";

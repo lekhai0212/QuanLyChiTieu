@@ -178,6 +178,14 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1pk-5L-jvL">
+                                        <rect key="frame" x="271" y="61" width="34" height="34"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="pass_hide.png"/>
+                                        <connections>
+                                            <action selector="btnShowPassPress:" destination="7h2-jM-x8f" eventType="touchUpInside" id="3oK-aM-TLq"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
@@ -204,12 +212,18 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Grt-FT-zWD">
+                                <rect key="frame" x="177" y="323" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                     <connections>
                         <outlet property="btnRegister" destination="CU2-7Z-3Hx" id="OCS-PG-DKv"/>
+                        <outlet property="btnShowPass" destination="1pk-5L-jvL" id="HAT-qb-dbx"/>
                         <outlet property="btnSignIn" destination="enx-st-dyM" id="qlV-8T-TiN"/>
+                        <outlet property="icWaiting" destination="Grt-FT-zWD" id="Z0r-nQ-fnc"/>
                         <outlet property="imgLogo" destination="2VT-n8-hGT" id="2UU-M7-VOf"/>
                         <outlet property="lbHaveAccount" destination="HNr-YY-tfC" id="MTe-zo-73K"/>
                         <outlet property="lbSepa" destination="jqp-EC-yky" id="45c-or-SP2"/>
@@ -243,5 +257,6 @@
     </scenes>
     <resources>
         <image name="logo.png" width="2971" height="2945"/>
+        <image name="pass_hide.png" width="200" height="200"/>
     </resources>
 </document>

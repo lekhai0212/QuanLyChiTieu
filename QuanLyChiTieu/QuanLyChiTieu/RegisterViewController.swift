@@ -8,22 +8,26 @@
 
 import UIKit
 import Masonry
+import CoreData
+import Toast
 
 class RegisterViewController: UIViewController {
 
     @IBOutlet weak var imgLogo: UIImageView!
     @IBOutlet weak var viewInfo: UIView!
-    
     @IBOutlet weak var tfEmail: UITextField!
-    
     @IBOutlet weak var tfPassword: UITextField!
     @IBOutlet weak var lbSepa: UILabel!
+    @IBOutlet weak var btnShowPass: UIButton!
+    
     @IBOutlet weak var btnRegister: UIButton!
     @IBOutlet weak var lbHaveAccount: UILabel!
     @IBOutlet weak var btnSignIn: UIButton!
+    @IBOutlet weak var icWaiting: UIActivityIndicatorView!
     
     var paddingY:CGFloat!
     var hItem:CGFloat!
+    var accModel:AccountModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,10 +37,13 @@ class RegisterViewController: UIViewController {
         
         let tapOnScreen:UITapGestureRecognizer = UITapGestureRecognizer.init(target: self, action: #selector(closeKeyboard))
         self.view.addGestureRecognizer(tapOnScreen)
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        if accModel == nil {
+            accModel = AccountModel()
+        }
+        
         btnRegister.setTitle(NSLocalizedString("Register", comment: "").uppercased(), for: .normal)
         tfEmail.placeholder = NSLocalizedString("Email", comment: "")
         tfPassword.placeholder = NSLocalizedString("Password", comment: "")
@@ -44,12 +51,19 @@ class RegisterViewController: UIViewController {
         btnSignIn.setTitle(NSLocalizedString("Login", comment: "").uppercased(), for: .normal)
         self.title = NSLocalizedString("Register account", comment: "")
         
-        //  self.navigationController?.navigationBar.backgroundColor = UIColor.red
+        btnShowPass.tag = 0
+        tfPassword.isSecureTextEntry = true
+        
+        icWaiting.isHidden = true
+        
         self.navigationController?.navigationBar.barTintColor = UIColor.init(red: 0, green: 0.686, blue: 0.94, alpha: 1.0)
         self.navigationController?.navigationBar.tintColor = UIColor.white
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        accModel = nil
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -61,6 +75,61 @@ class RegisterViewController: UIViewController {
     }
     
     @IBAction func btnRegisterPress(_ sender: UIButton) {
+        if tfEmail.text?.count == 0 || tfPassword.text?.count == 0 {
+            
+            let alertView = UIAlertController.init(title: nil, message: NSLocalizedString("Please complete all information", comment: ""), preferredStyle: .alert)
+            let closeAction = UIAlertAction.init(title: NSLocalizedString("Close", comment: ""), style: .default) { (alert:UIAlertAction?) in
+                alertView.dismiss(animated: true, completion: nil)
+            }
+            alertView.addAction(closeAction)
+            self.present(alertView, animated: true, completion: nil)
+            return
+        }
+        
+        icWaiting.isHidden = false
+        icWaiting.startAnimating()
+        
+        self.closeKeyboard()
+        
+        let account:String = tfEmail.text!
+        let exsits:Bool = accModel.checkAccountExists(username: account)
+        if exsits {
+            let alertView = UIAlertController.init(title: nil, message: NSLocalizedString("This account already exists!", comment: ""), preferredStyle: .alert)
+            let closeAction = UIAlertAction.init(title: NSLocalizedString("Close", comment: ""), style: .default) { (alert:UIAlertAction?) in
+                alertView.dismiss(animated: true, completion: nil)
+            }
+            alertView.addAction(closeAction)
+            self.present(alertView, animated: true, completion: nil)
+            return
+        }
+        let password:String = tfPassword.text!
+        let result:Bool = accModel.addNewAccount(username: account, password: password)
+        
+        if result {
+            self.view.makeToast(NSLocalizedString("Your account has been registered successful", comment: ""), duration: 2.0, position: CSToastPositionCenter)
+            self.perform(#selector(dismissView), with: nil, afterDelay: 2.0)
+        }else{
+            self.view.makeToast(NSLocalizedString("Failed to register, please try later", comment: ""), duration: 2.0, position: CSToastPositionCenter)
+            self.perform(#selector(dismissView), with: nil, afterDelay: 2.0)
+        }
+        icWaiting.isHidden = true
+        icWaiting.stopAnimating()
+    }
+    
+    @IBAction func btnShowPassPress(_ sender: UIButton) {
+        if sender.tag == 0 {
+            sender.tag = 1
+            sender.setImage(UIImage.init(named: "pass_show"), for: .normal)
+            tfPassword.isSecureTextEntry = false
+        }else{
+            sender.tag = 0
+            sender.setImage(UIImage.init(named: "pass_hide"), for: .normal)
+            tfPassword.isSecureTextEntry = true
+        }
+    }
+    
+    @objc func dismissView (){
+        self.navigationController?.popViewController(animated: true)
     }
     
     @objc func closeKeyboard(){
@@ -133,6 +202,13 @@ class RegisterViewController: UIViewController {
             make?.height.mas_equalTo()(1.0)
         }
         
+        btnShowPass.imageEdgeInsets = UIEdgeInsetsMake(10, 10, 10, 10)
+        btnShowPass.mas_makeConstraints { (make:MASConstraintMaker?) in
+            make?.top.bottom().equalTo()(self.tfPassword)
+            make?.right.equalTo()(self.tfPassword.mas_right)
+            make?.width.mas_equalTo()(hItem)
+        }
+        
         //  logo
         imgLogo.mas_makeConstraints { (make:MASConstraintMaker?) in
             make?.centerX.equalTo()(self.view.mas_centerX)
@@ -163,6 +239,11 @@ class RegisterViewController: UIViewController {
             make?.width.mas_equalTo()(sizeButton+3.0)
         }
         
+        icWaiting.activityIndicatorViewStyle = .gray
+        icWaiting.alpha = 0.5
+        icWaiting.mas_makeConstraints { (make:MASConstraintMaker?) in
+            make?.top.left().bottom().right().equalTo()(self.view)
+        }
     }
     
     func getSizeOfText(content:String, font:UIFont) -> CGFloat {
@@ -170,15 +251,4 @@ class RegisterViewController: UIViewController {
         let size:CGSize = content.size(withAttributes: fontAttributes)
         return size.width
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

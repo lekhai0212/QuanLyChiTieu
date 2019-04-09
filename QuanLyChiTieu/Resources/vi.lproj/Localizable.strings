@@ -15,3 +15,8 @@
 "Spend management" = "Quản lý chi tiêu";
 "Already have an account?" = "Đã có tài khoản đăng nhập?";
 "Register account" = "Đăng ký tài khoản";
+"Please complete all information" = "Xin vui lòng điền đẩy đủ thông tin";
+"This account already exists!" = "Tài khoản này đã tồn tại!";
+"Close" = "Đóng";
+"Your account has been registered successful" = "Tài khoản của bạn đã được đăng ký thành công";
+"Failed to register, please try later" = "Đăng ký thất bại, vui lòng thử lại sau";

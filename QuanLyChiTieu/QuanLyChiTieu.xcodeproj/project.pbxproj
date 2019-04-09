@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		15886986225C3D79000FC0E5 /* pass_show.png in Resources */ = {isa = PBXBuildFile; fileRef = 15886984225C3D78000FC0E5 /* pass_show.png */; };
+		15886987225C3D79000FC0E5 /* pass_hide.png in Resources */ = {isa = PBXBuildFile; fileRef = 15886985225C3D78000FC0E5 /* pass_hide.png */; };
+		15886989225C4BB7000FC0E5 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15886988225C4BB6000FC0E5 /* CoreData.framework */; };
+		1588698C225C5098000FC0E5 /* AccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1588698B225C5098000FC0E5 /* AccountModel.swift */; };
 		15ADD21A225AFD4300A8F3CE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15ADD219225AFD4300A8F3CE /* AppDelegate.swift */; };
 		15ADD21C225AFD4300A8F3CE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15ADD21B225AFD4300A8F3CE /* ViewController.swift */; };
 		15ADD21F225AFD4300A8F3CE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15ADD21D225AFD4300A8F3CE /* Main.storyboard */; };
@@ -24,6 +28,10 @@
 
 /* Begin PBXFileReference section */
 		0E60493C999FD289F2985B24 /* Pods_QuanLyChiTieu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QuanLyChiTieu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		15886984225C3D78000FC0E5 /* pass_show.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pass_show.png; sourceTree = "<group>"; };
+		15886985225C3D78000FC0E5 /* pass_hide.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pass_hide.png; sourceTree = "<group>"; };
+		15886988225C4BB6000FC0E5 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		1588698B225C5098000FC0E5 /* AccountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountModel.swift; sourceTree = "<group>"; };
 		15ADD216225AFD4300A8F3CE /* QuanLyChiTieu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuanLyChiTieu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		15ADD219225AFD4300A8F3CE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		15ADD21B225AFD4300A8F3CE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -50,6 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				15886989225C4BB7000FC0E5 /* CoreData.framework in Frameworks */,
 				C6C1B1823237D2A0C8D1F2CA /* Pods_QuanLyChiTieu.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -57,6 +66,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1588698A225C4DC9000FC0E5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1588698B225C5098000FC0E5 /* AccountModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		15ADD20D225AFD4300A8F3CE = {
 			isa = PBXGroup;
 			children = (
@@ -79,6 +96,7 @@
 		15ADD218225AFD4300A8F3CE /* QuanLyChiTieu */ = {
 			isa = PBXGroup;
 			children = (
+				1588698A225C4DC9000FC0E5 /* Model */,
 				15ADD219225AFD4300A8F3CE /* AppDelegate.swift */,
 				15ADD21B225AFD4300A8F3CE /* ViewController.swift */,
 				15ADD22E225AFFA700A8F3CE /* SignInViewController.swift */,
@@ -107,6 +125,8 @@
 				15ADD245225B2BAC00A8F3CE /* ic_email.png */,
 				15ADD248225B3AC800A8F3CE /* logo.png */,
 				15ADD244225B2BAC00A8F3CE /* ic_lock.png */,
+				15886985225C3D78000FC0E5 /* pass_hide.png */,
+				15886984225C3D78000FC0E5 /* pass_show.png */,
 			);
 			path = images;
 			sourceTree = "<group>";
@@ -123,6 +143,7 @@
 		DF9FD747FD02AFD3C3D68E93 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				15886988225C4BB6000FC0E5 /* CoreData.framework */,
 				0E60493C999FD289F2985B24 /* Pods_QuanLyChiTieu.framework */,
 			);
 			name = Frameworks;
@@ -195,7 +216,9 @@
 				15ADD246225B2BAC00A8F3CE /* ic_lock.png in Resources */,
 				15ADD249225B3AC900A8F3CE /* logo.png in Resources */,
 				15ADD247225B2BAC00A8F3CE /* ic_email.png in Resources */,
+				15886987225C3D79000FC0E5 /* pass_hide.png in Resources */,
 				15ADD21F225AFD4300A8F3CE /* Main.storyboard in Resources */,
+				15886986225C3D79000FC0E5 /* pass_show.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -248,6 +271,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				15ADD22F225AFFA700A8F3CE /* SignInViewController.swift in Sources */,
+				1588698C225C5098000FC0E5 /* AccountModel.swift in Sources */,
 				15ADD24B225B405400A8F3CE /* RegisterViewController.swift in Sources */,
 				15ADD222225AFD4300A8F3CE /* QuanLyChiTieu.xcdatamodeld in Sources */,
 				15ADD21C225AFD4300A8F3CE /* ViewController.swift in Sources */,

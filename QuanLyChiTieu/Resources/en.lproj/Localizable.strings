@@ -14,3 +14,8 @@
 "Spend management" = "Spend management";
 "Already have an account?" = "Already have an account?";
 "Register account" = "Register account";
+"Please complete all information" = "Please complete all information";
+"This account already exists!" = "This account already exists!";
+"Close" = "Close";
+"Your account has been registered successful" = "Your account has been registered successful";
+"Failed to register, please try later" = "Failed to register, please try later";

@@ -57,4 +57,23 @@ class AccountModel: NSObject {
             return false
         }
     }
+    
+    func checkValidAccount(username:String, password:String) -> Bool {
+        let AppDel:AppDelegate = UIApplication.shared.delegate as! AppDelegate
+        
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Account")
+        request.predicate = NSPredicate(format: "username = %@ AND password = %@", username, password)
+        request.returnsObjectsAsFaults = false
+        
+        do {
+            let result = try AppDel.persistentContainer.viewContext.fetch(request)
+            for data in result as! [NSManagedObject] {
+                print(data.value(forKey: "username") as! String)
+                return true
+            }
+            return false
+        } catch {
+            return false
+        }
+    }
 }

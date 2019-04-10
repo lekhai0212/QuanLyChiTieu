@@ -23,6 +23,7 @@
 		15ADD247225B2BAC00A8F3CE /* ic_email.png in Resources */ = {isa = PBXBuildFile; fileRef = 15ADD245225B2BAC00A8F3CE /* ic_email.png */; };
 		15ADD249225B3AC900A8F3CE /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 15ADD248225B3AC800A8F3CE /* logo.png */; };
 		15ADD24B225B405400A8F3CE /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15ADD24A225B405400A8F3CE /* RegisterViewController.swift */; };
+		84C2214A225D691600C4ECFE /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C22149225D691600C4ECFE /* HomeViewController.swift */; };
 		C6C1B1823237D2A0C8D1F2CA /* Pods_QuanLyChiTieu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E60493C999FD289F2985B24 /* Pods_QuanLyChiTieu.framework */; };
 /* End PBXBuildFile section */
 
@@ -49,6 +50,9 @@
 		15ADD245225B2BAC00A8F3CE /* ic_email.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_email.png; sourceTree = "<group>"; };
 		15ADD248225B3AC800A8F3CE /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		15ADD24A225B405400A8F3CE /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		84C22142225D66BB00C4ECFE /* AppString.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppString.h; sourceTree = "<group>"; };
+		84C22145225D688D00C4ECFE /* QuanLyChiTieu-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "QuanLyChiTieu-Bridging-Header.h"; sourceTree = "<group>"; };
+		84C22149225D691600C4ECFE /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		B21FD4686CE0206AC2F142F4 /* Pods-QuanLyChiTieu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuanLyChiTieu.debug.xcconfig"; path = "Pods/Target Support Files/Pods-QuanLyChiTieu/Pods-QuanLyChiTieu.debug.xcconfig"; sourceTree = "<group>"; };
 		D3555135EAD15A6DDC75997E /* Pods-QuanLyChiTieu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuanLyChiTieu.release.xcconfig"; path = "Pods/Target Support Files/Pods-QuanLyChiTieu/Pods-QuanLyChiTieu.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -101,11 +105,13 @@
 				15ADD21B225AFD4300A8F3CE /* ViewController.swift */,
 				15ADD22E225AFFA700A8F3CE /* SignInViewController.swift */,
 				15ADD24A225B405400A8F3CE /* RegisterViewController.swift */,
+				84C22149225D691600C4ECFE /* HomeViewController.swift */,
 				15ADD21D225AFD4300A8F3CE /* Main.storyboard */,
 				15ADD223225AFD4600A8F3CE /* Assets.xcassets */,
 				15ADD225225AFD4600A8F3CE /* LaunchScreen.storyboard */,
 				15ADD228225AFD4600A8F3CE /* Info.plist */,
 				15ADD220225AFD4300A8F3CE /* QuanLyChiTieu.xcdatamodeld */,
+				84C22145225D688D00C4ECFE /* QuanLyChiTieu-Bridging-Header.h */,
 			);
 			path = QuanLyChiTieu;
 			sourceTree = "<group>";
@@ -115,6 +121,7 @@
 			children = (
 				15ADD243225B2B9300A8F3CE /* images */,
 				15ADD23F225B090C00A8F3CE /* Localizable.strings */,
+				84C22142225D66BB00C4ECFE /* AppString.h */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -183,6 +190,7 @@
 				TargetAttributes = {
 					15ADD215225AFD4300A8F3CE = {
 						CreatedOnToolsVersion = 9.4;
+						LastSwiftMigration = 1010;
 					};
 				};
 			};
@@ -275,6 +283,7 @@
 				15ADD24B225B405400A8F3CE /* RegisterViewController.swift in Sources */,
 				15ADD222225AFD4300A8F3CE /* QuanLyChiTieu.xcdatamodeld in Sources */,
 				15ADD21C225AFD4300A8F3CE /* ViewController.swift in Sources */,
+				84C2214A225D691600C4ECFE /* HomeViewController.swift in Sources */,
 				15ADD21A225AFD4300A8F3CE /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -433,6 +442,7 @@
 			baseConfigurationReference = B21FD4686CE0206AC2F142F4 /* Pods-QuanLyChiTieu.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = JWYJ345PPC;
 				INFOPLIST_FILE = QuanLyChiTieu/Info.plist;
@@ -445,6 +455,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "8d723448-3ab5-4cfd-ad7a-5dbea488d000";
 				PROVISIONING_PROFILE_SPECIFIER = "New CloudFone Development";
+				SWIFT_OBJC_BRIDGING_HEADER = "QuanLyChiTieu/QuanLyChiTieu-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -455,6 +467,7 @@
 			baseConfigurationReference = D3555135EAD15A6DDC75997E /* Pods-QuanLyChiTieu.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = QuanLyChiTieu/Info.plist;
@@ -466,6 +479,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.ods.cloudfoneapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "QuanLyChiTieu/QuanLyChiTieu-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

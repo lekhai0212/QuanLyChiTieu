@@ -8,6 +8,7 @@
 
 import UIKit
 import Masonry
+import Toast
 
 class SignInViewController: UIViewController {
 
@@ -22,10 +23,15 @@ class SignInViewController: UIViewController {
     @IBOutlet weak var lbOr: UILabel!
     @IBOutlet weak var btnSignInFacebook: UIButton!
     @IBOutlet weak var btnSignInGoogle: UIButton!
+    @IBOutlet weak var btnShowPass: UIButton!
+    @IBOutlet weak var icWaiting: UIActivityIndicatorView!
     
     var hItem:CGFloat!
     var paddingX:CGFloat!
     var paddingY:CGFloat!
+    
+    var accModel:AccountModel!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,10 +53,16 @@ class SignInViewController: UIViewController {
         self.lbCompany.text = NSLocalizedString("Spend management", comment: "")
         
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
+        
+        if accModel == nil {
+            accModel = AccountModel()
+        }
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
+        accModel = nil
     }
 
     override func didReceiveMemoryWarning() {
@@ -58,7 +70,40 @@ class SignInViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func btnShowPassPress(_ sender: UIButton) {
+        if sender.tag == 0 {
+            sender.tag = 1
+            sender.setImage(UIImage.init(named: "pass_show"), for: .normal)
+            tfPassword.isSecureTextEntry = false
+        }else{
+            sender.tag = 0
+            sender.setImage(UIImage.init(named: "pass_hide"), for: .normal)
+            tfPassword.isSecureTextEntry = true
+        }
+    }
+    
     @IBAction func btnLoginPress(_ sender: UIButton) {
+        self.closeKeyboard()
+        //  check value exists
+        if tfEmail.text?.count == 0 || tfPassword.text?.count == 0 {
+            self.view.makeToast(NSLocalizedString("Please complete all information", comment: ""), duration: 1.5, position: CSToastPositionCenter)
+            return
+        }
+        
+        let valid:Bool = accModel.checkValidAccount(username: tfEmail.text!, password: tfPassword.text!)
+        if !valid {
+            self.view.makeToast(NSLocalizedString("Account not correct, please check again!", comment: ""), duration: 1.5, position: CSToastPositionCenter)
+            return
+        }
+        
+        UserDefaults.standard.setValue(tfEmail.text!, forKey: key_username)
+        UserDefaults.standard.setValue(tfPassword.text!, forKey: key_password)
+        UserDefaults.standard.synchronize()
+        
+        
+        let homeVC = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
+        
+        self.navigationController?.present(homeVC, animated: true, completion: nil)
     }
     
     @IBAction func btnForgotPasswordPress(_ sender: UIButton) {
@@ -110,6 +155,7 @@ class SignInViewController: UIViewController {
         }
         
         self.tfPassword.textColor = textColor
+        self.tfPassword.isSecureTextEntry = true
         self.tfPassword.borderStyle = UITextBorderStyle.none
         self.tfPassword.layer.borderColor = UIColor.init(red: 0.85, green: 0.85, blue: 0.85, alpha: 1.0).cgColor
         self.tfPassword.layer.borderWidth = 1.0
@@ -128,6 +174,14 @@ class SignInViewController: UIViewController {
         
         self.tfPassword.leftView = btnPass;
         self.tfPassword.leftViewMode = .always
+        
+        btnShowPass.tag = 0
+        btnShowPass.imageEdgeInsets = UIEdgeInsetsMake(10, 10, 10, 10)
+        btnShowPass.mas_makeConstraints { (make:MASConstraintMaker?) in
+            make?.top.bottom().equalTo()(self.tfPassword)
+            make?.right.equalTo()(self.tfPassword.mas_right)
+            make?.width.mas_equalTo()(hItem)
+        }
         
         //  username
         self.tfPassword.textColor = textColor
@@ -210,6 +264,13 @@ class SignInViewController: UIViewController {
             make?.top.equalTo()(self.btnSignInFacebook.mas_bottom)?.offset()(paddingY)
             make?.height.mas_equalTo()(hItem)
         }
+        
+        icWaiting.activityIndicatorViewStyle = .gray
+        icWaiting.alpha = 0.5
+        icWaiting.mas_makeConstraints { (make:MASConstraintMaker?) in
+            make?.top.left()?.bottom()?.right()?.equalTo()(self.view)
+        }
+        icWaiting.isHidden = true
     }
     
     /*

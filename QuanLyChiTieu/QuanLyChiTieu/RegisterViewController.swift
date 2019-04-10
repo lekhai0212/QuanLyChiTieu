@@ -75,33 +75,37 @@ class RegisterViewController: UIViewController {
     }
     
     @IBAction func btnRegisterPress(_ sender: UIButton) {
+        self.closeKeyboard()
+        
         if tfEmail.text?.count == 0 || tfPassword.text?.count == 0 {
-            
+            self.view.makeToast(NSLocalizedString("Please complete all information", comment: ""), duration: 1.5, position: CSToastPositionCenter)
+            /*
             let alertView = UIAlertController.init(title: nil, message: NSLocalizedString("Please complete all information", comment: ""), preferredStyle: .alert)
             let closeAction = UIAlertAction.init(title: NSLocalizedString("Close", comment: ""), style: .default) { (alert:UIAlertAction?) in
                 alertView.dismiss(animated: true, completion: nil)
             }
             alertView.addAction(closeAction)
-            self.present(alertView, animated: true, completion: nil)
+            self.present(alertView, animated: true, completion: nil)    */
+            return
+        }
+        
+        let account:String = tfEmail.text!
+        let exsits:Bool = accModel.checkAccountExists(username: account)
+        if exsits {
+            self.view.makeToast(NSLocalizedString("This account already exists!", comment: ""), duration: 1.5, position: CSToastPositionCenter)
+            /*
+            let alertView = UIAlertController.init(title: nil, message: NSLocalizedString("This account already exists!", comment: ""), preferredStyle: .alert)
+            let closeAction = UIAlertAction.init(title: NSLocalizedString("Close", comment: ""), style: .default) { (alert:UIAlertAction?) in
+                alertView.dismiss(animated: true, completion: nil)
+            }
+            alertView.addAction(closeAction)
+            self.present(alertView, animated: true, completion: nil)    */
             return
         }
         
         icWaiting.isHidden = false
         icWaiting.startAnimating()
         
-        self.closeKeyboard()
-        
-        let account:String = tfEmail.text!
-        let exsits:Bool = accModel.checkAccountExists(username: account)
-        if exsits {
-            let alertView = UIAlertController.init(title: nil, message: NSLocalizedString("This account already exists!", comment: ""), preferredStyle: .alert)
-            let closeAction = UIAlertAction.init(title: NSLocalizedString("Close", comment: ""), style: .default) { (alert:UIAlertAction?) in
-                alertView.dismiss(animated: true, completion: nil)
-            }
-            alertView.addAction(closeAction)
-            self.present(alertView, animated: true, completion: nil)
-            return
-        }
         let password:String = tfPassword.text!
         let result:Bool = accModel.addNewAccount(username: account, password: password)
         

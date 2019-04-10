@@ -14,9 +14,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        //  hide title of back bar title
+        let attributes = [NSAttributedStringKey.font:  UIFont(name: "Helvetica-Bold", size: 0.1)!, NSAttributedStringKey.foregroundColor: UIColor.clear]
+        UIBarButtonItem.appearance().setTitleTextAttributes(attributes, for: .normal)
+        UIBarButtonItem.appearance().setTitleTextAttributes(attributes, for: .highlighted)
+        
+        //  check login state
+        let username:String = UserDefaults.standard.value(forKey: key_username) as! String
+        let password:String = UserDefaults.standard.value(forKey: key_password) as! String
+        if username.count > 0 && password.count > 0 {
+            
+            let homeVC = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
+            
+            self.window?.rootViewController = homeVC
+        }else{
+            let signInVC = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "SignInViewController") as! SignInViewController
+            
+            self.window?.rootViewController = signInVC
+        }
+        
         return true
     }
 

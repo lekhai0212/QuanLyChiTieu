@@ -20,3 +20,17 @@
 "Your account has been registered successful" = "Your account has been registered successful";
 "Failed to register, please try later" = "Failed to register, please try later";
 "Account not correct, please check again!" = "Account not correct, please check again!";
+
+"Overview" = "Overview";
+"Account" = "Account";
+"More" = "More";
+
+"Income" = "Income";
+"Expense" = "Expense";
+"Accumulate" = "Accumulate";
+
+"Financial statement" = "Financial statement";
+"Expense vs income" = "Expense vs income";
+"Recent transactions" = "Recent transactions";
+
+"Add account" = "Add account";

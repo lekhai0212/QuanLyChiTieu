@@ -50,7 +50,7 @@ class WalletAccountCell: UITableViewCell {
         lbMoney.font = UIFont.systemFont(ofSize: 14.0, weight: .thin)
         lbMoney.mas_makeConstraints { (make:MASConstraintMaker?) in
             make?.left.right().equalTo()(lbName)
-            make?.top.equalTo()(lbName.mas_top)
+            make?.top.equalTo()(lbName.mas_bottom)
             make?.bottom.equalTo()(self)?.offset()(-10.0)
         }
     }

@@ -45,12 +45,27 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
             tbContent.isHidden = false
             lbTotalBalane.isHidden = false
             lbNoData.isHidden = true
+            
+            var totalBalance = self.getTotalBalance()
+            totalBalance = String(format: "$%.02f", totalBalance)
+            
+            lbTotalBalane.text = NSLocalizedString("Total banlance", comment: "") + ": " + totalBalance
         }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func getTotalBalance() -> String {
+        var totalBalance:Int = 0
+        
+        for item in listAccount {
+            let object:WalletAccountObj = item as! WalletAccountObj
+            totalBalance = totalBalance + Int(object.initialBalance)!
+        }
+        return String(totalBalance)
     }
     
     func setupUIForView() {
@@ -120,20 +135,15 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "WalletAccountCell", for: indexPath) as! WalletAccountCell
-        
-        print("\(listAccount)")
-        print("\(indexPath.row)")
-        
-        let walletObj = listAccount[indexPath.row]
-        print("\(walletObj)")
-//        if walletObj.accountType == 1 {
-//            cell.imgType.image = UIImage(named: "ic_money")
-//        }else{
-//            cell.imgType.image = UIImage(named: "ic_bank")
-//        }
-//
-//        cell.lbName.text = walletObj.accountName
-//        cell.lbMoney.text = walletObj.initialBalance
+        let walletObj = listAccount?[indexPath.row] as! WalletAccountObj
+        if walletObj.accountType == 1 {
+            cell.imgType.image = UIImage(named: "ic_money")
+        }else{
+            cell.imgType.image = UIImage(named: "ic_bank")
+        }
+
+        cell.lbName.text = walletObj.accountName
+        cell.lbMoney.text = walletObj.initialBalance
         
         return cell
     }

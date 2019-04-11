@@ -81,11 +81,11 @@ class WalletAccountModel: NSObject {
                 let balance = data.value(forKey: "initial_balance") as! String
                 let idObj = data.value(forKey: "id") as! Int
                 
-                let accObj = WalletAccountObj()
+                let accObj = WalletAccountObj.init()
                 accObj.updateInfo(itemId: idObj, name: name, type: type, desc: desc, balance: balance)
                 rsArr.append(accObj)
             }
-            return result
+            return rsArr
         } catch {
             return []
         }

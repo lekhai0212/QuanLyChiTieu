@@ -12,4 +12,7 @@
 #define key_username    @"key_username"
 #define key_password    @"key_password"
 
+#define key_wallet_account_id   @"key_wallet_account_id"
+
+
 #endif /* AppString_h */

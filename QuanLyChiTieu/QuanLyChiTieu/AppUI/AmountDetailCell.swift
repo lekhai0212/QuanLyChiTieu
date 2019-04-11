@@ -33,6 +33,7 @@ class AmountDetailCell: UITableViewCell {
             make?.width.height().mas_equalTo()(15.0)
         }
         
+        tfContent.font = UIFont.systemFont(ofSize: 17.0, weight: .regular)
         tfContent.borderStyle = .none
         tfContent.textColor = UIColor(red: 80/255.0, green: 80/255.0, blue: 80/255.0, alpha: 1.0)
         tfContent.mas_makeConstraints { (make:MASConstraintMaker?) in

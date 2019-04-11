@@ -41,6 +41,10 @@ class CreateAccountViewController: UIViewController, UITableViewDelegate, UITabl
         // Dispose of any resources that can be recreated.
     }
     
+    @objc func closeKeyboad () {
+        self.view.endEditing(true)
+    }
+    
     func setupUIForView() {
         self.automaticallyAdjustsScrollViewInsets = false
         self.view.backgroundColor = UIColor(red: 235/255.0, green: 235/255.0, blue: 235/255.0, alpha: 1.0)
@@ -97,6 +101,8 @@ class CreateAccountViewController: UIViewController, UITableViewDelegate, UITabl
     }
 
     @objc func saveNewAccount(){
+        self.closeKeyboad()
+        
         //  check initial balance
         let balaneCell = tbContent.cellForRow(at: IndexPath(row: 0, section: 0)) as! BalanceCell
         let balance:String = balaneCell.tfAmount.text!
@@ -114,17 +120,27 @@ class CreateAccountViewController: UIViewController, UITableViewDelegate, UITabl
         }
         
         //  Description
-        let descCell = tbContent.cellForRow(at: IndexPath(row: 0, section: 3)) as! AmountDetailCell
+        let descCell = tbContent.cellForRow(at: IndexPath(row: 3, section: 1)) as! AmountDetailCell
         let description:String = descCell.tfContent.text ?? ""
         
         let exists:Bool = walletAccModel.checkWalletAcountExists(accountName: accountName)
         if exists {
             self.view.makeToast(NSLocalizedString("Account name was exists. Please try with another account name!", comment: ""), duration: 1.0, position: CSToastPositionCenter)
-            return
+        }else{
+            let result = walletAccModel.saveWalletAccount(name: accountName, type: accountType, initialBalance: balance, descryption: description)
+            if !result {
+                self.view.makeToast(NSLocalizedString("Can not save your account. Please try later!", comment: ""), duration: 1.0, position: CSToastPositionCenter)
+            }else{
+                self.view.makeToast(NSLocalizedString("Your account has been saved successful", comment: ""), duration: 1.5, position: CSToastPositionCenter)
+                self.perform(#selector(backToPreviousView), with: nil, afterDelay: 1.5)
+            }
         }
-        
     }
 
+    @objc func backToPreviousView() {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
     //  MARK: Tableview
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
@@ -151,6 +167,7 @@ class CreateAccountViewController: UIViewController, UITableViewDelegate, UITabl
             let cell:BalanceCell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! BalanceCell
             cell.selectionStyle = .none
             cell.tfAmount.keyboardType = .numberPad
+            cell.tfAmount.addTarget(self, action: #selector(textfieldAmountChanged(_:)), for: .editingChanged)
             
             return cell
             
@@ -207,6 +224,14 @@ class CreateAccountViewController: UIViewController, UITableViewDelegate, UITabl
         }else{
             return 60.0
         }
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        self.closeKeyboad()
+    }
+    
+    @objc func textfieldAmountChanged (_ sender:UITextField){
+        
     }
     
     //  MARK: Choose account type popup delegate

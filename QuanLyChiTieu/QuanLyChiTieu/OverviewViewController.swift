@@ -70,19 +70,19 @@ class OverviewViewController: UIViewController, UITableViewDataSource, UITableVi
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             let identifier:String = "WalletInfoCell"
-            var cell:WalletInfoCell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! WalletInfoCell
+            let cell:WalletInfoCell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! WalletInfoCell
             cell.lbMoney.text = "10.000.000 đ"
             cell.updateFrameForCell()
             return cell
             
         }else if indexPath.section == 1 {
             let identifier:String = "ReceiptAndExpenseCell"
-            var cell:ReceiptAndExpenseCell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! ReceiptAndExpenseCell
+            let cell:ReceiptAndExpenseCell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! ReceiptAndExpenseCell
             return cell
             
         }else {
             let identifier:String = "ActionCell"
-            var cell:ActionCell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! ActionCell
+            let cell:ActionCell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! ActionCell
             return cell
         }
     }

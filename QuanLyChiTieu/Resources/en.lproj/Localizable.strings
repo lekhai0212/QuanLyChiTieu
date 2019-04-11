@@ -45,3 +45,8 @@
 "Initial balance invalid. Please check again!" = "Initial balance invalid. Please check again!";
 "Account name invalid. Please check again!" = "Account name invalid. Please check again!";
 "Account name was exists. Please try with another account name!" = "Account name was exists. Please try with another account name!";
+"Can not save your account. Please try later!" = "Can not save your account. Please try later!";
+"Your account has been saved successful" = "Your account has been saved successful";
+"No data" = "No data";
+
+

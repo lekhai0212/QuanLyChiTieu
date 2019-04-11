@@ -7,11 +7,15 @@
 //
 
 import UIKit
+import Masonry
 
-class AccountViewController: UIViewController {
+class AccountViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tbContent: UITableView!
     @IBOutlet weak var lbNoData: UILabel!
+    @IBOutlet weak var lbTotalBalane: UILabel!
+    var listAccount:Array<Any>!
+    var walletAccModel:WalletAccountModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,11 +27,66 @@ class AccountViewController: UIViewController {
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
         
         self.createRightBarButtonItem()
+        self.setupUIForView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        lbNoData.text = NSLocalizedString("No data", comment: "")
+        if walletAccModel == nil {
+            walletAccModel = WalletAccountModel()
+        }
+        
+        listAccount = walletAccModel.getWalletAccountList()
+        if listAccount.count == 0 {
+            tbContent.isHidden = true
+            lbTotalBalane.isHidden = true
+            lbNoData.isHidden = false
+        }else{
+            tbContent.isHidden = false
+            lbTotalBalane.isHidden = false
+            lbNoData.isHidden = true
+        }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func setupUIForView() {
+        self.automaticallyAdjustsScrollViewInsets = false
+        
+        let originY:CGFloat = UIApplication.shared.statusBarFrame.size.height + (self.navigationController?.navigationBar.frame.size.height)!
+        let tabHeight:CGFloat = (self.tabBarController?.tabBar.frame.size.height)!
+        
+        lbTotalBalane.textAlignment = .center
+        lbTotalBalane.font = UIFont.systemFont(ofSize: 20.0, weight: .semibold)
+        lbTotalBalane.backgroundColor = UIColor.white
+        lbTotalBalane.textColor = UIColor.black
+        lbTotalBalane.mas_makeConstraints { (make:MASConstraintMaker?) in
+            make?.top.equalTo()(self.view)?.offset()(originY)
+            make?.left.right().equalTo()(self.view)
+            make?.height.mas_equalTo()(60.0)
+        }
+        
+        tbContent.register(UINib(nibName: "WalletAccountCell", bundle: nil), forCellReuseIdentifier: "WalletAccountCell")
+        tbContent.delegate = self
+        tbContent.dataSource = self
+        tbContent.mas_makeConstraints { (make:MASConstraintMaker?) in
+            make?.top.equalTo()(lbTotalBalane.mas_bottom)?.offset()(5.0)
+            make?.left.right().equalTo()(self.view)
+            make?.bottom.equalTo()(self.view)?.offset()(-tabHeight)
+        }
+        
+        lbNoData.textAlignment = .center
+        lbNoData.backgroundColor = UIColor.white
+        lbNoData.textColor = UIColor(red: 80/255.0, green: 80/255.0, blue: 80/255.0, alpha: 1.0)
+        lbNoData.font = UIFont.systemFont(ofSize: 20.0, weight: .regular)
+        lbNoData.mas_makeConstraints { (make:MASConstraintMaker?) in
+            make?.top.equalTo()(self.view)?.offset()(originY)
+            make?.left.right().equalTo()(self.view)
+            make?.bottom.equalTo()(self.view)?.offset()(-tabHeight)
+        }
     }
     
     func createRightBarButtonItem() {
@@ -50,14 +109,37 @@ class AccountViewController: UIViewController {
         self.navigationController?.pushViewController(createAccountVC, animated: true)
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    // MARK: - Tableview
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
     }
-    */
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return listAccount.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "WalletAccountCell", for: indexPath) as! WalletAccountCell
+        
+        print("\(listAccount)")
+        print("\(indexPath.row)")
+        
+        let walletObj = listAccount[indexPath.row]
+        print("\(walletObj)")
+//        if walletObj.accountType == 1 {
+//            cell.imgType.image = UIImage(named: "ic_money")
+//        }else{
+//            cell.imgType.image = UIImage(named: "ic_bank")
+//        }
+//
+//        cell.lbName.text = walletObj.accountName
+//        cell.lbMoney.text = walletObj.initialBalance
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60.0
+    }
 
 }

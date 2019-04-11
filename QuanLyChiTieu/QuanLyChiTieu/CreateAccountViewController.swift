@@ -8,10 +8,13 @@
 
 import UIKit
 import Masonry
+import Toast
 
-class CreateAccountViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
+class CreateAccountViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ChooseAccountTypePopupViewDelegate {
+    
     @IBOutlet weak var tbContent: UITableView!
+    var accountType:Int!
+    var walletAccModel:WalletAccountModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +24,17 @@ class CreateAccountViewController: UIViewController, UITableViewDelegate, UITabl
         self.createDoneBarButtonItem()
         self.setupUIForView()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        accountType = 1
+        if walletAccModel == nil {
+            walletAccModel = WalletAccountModel()
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        walletAccModel = nil
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -29,6 +43,7 @@ class CreateAccountViewController: UIViewController, UITableViewDelegate, UITabl
     
     func setupUIForView() {
         self.automaticallyAdjustsScrollViewInsets = false
+        self.view.backgroundColor = UIColor(red: 235/255.0, green: 235/255.0, blue: 235/255.0, alpha: 1.0)
         
         let originY:CGFloat = UIApplication.shared.statusBarFrame.size.height + (self.navigationController?.navigationBar.frame.size.height)!
         let tabHeight:CGFloat = (self.tabBarController?.tabBar.frame.size.height)!
@@ -36,6 +51,7 @@ class CreateAccountViewController: UIViewController, UITableViewDelegate, UITabl
         tbContent.delegate = self
         tbContent.dataSource = self
         tbContent.separatorStyle = .none
+        tbContent.backgroundColor = UIColor.clear
         
         let BalanceCellNib = UINib(nibName: "BalanceCell", bundle: nil)
         let AmountDetailCellNib = UINib(nibName: "AmountDetailCell", bundle: nil)
@@ -48,6 +64,21 @@ class CreateAccountViewController: UIViewController, UITableViewDelegate, UITabl
             make?.left.right().equalTo()(self.view)
             make?.bottom.equalTo()(self.view)?.offset()(-tabHeight)
         }
+        
+        let footerView:UIView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 75.0))
+        footerView.backgroundColor = UIColor.clear
+        
+        let btnSave:UIButton = UIButton(type: .custom)
+        btnSave.frame = CGRect(x: 15.0, y: (footerView.frame.size.height-40.0)/2, width: footerView.frame.size.width-30.0, height: 40.0)
+        btnSave.titleLabel?.font = UIFont.systemFont(ofSize: 16.0, weight: .regular)
+        btnSave.backgroundColor = UIColor(red: 0, green: 0.686, blue: 0.94, alpha: 1.0)
+        btnSave.layer.cornerRadius = 5.0
+        btnSave.setTitleColor(UIColor.white, for: .normal)
+        btnSave.setTitle(NSLocalizedString("Save", comment: "").uppercased(), for: .normal)
+        btnSave.addTarget(self, action: #selector(saveNewAccount), for: .touchUpInside)
+        footerView.addSubview(btnSave)
+        
+        tbContent.tableFooterView = footerView
     }
     
     func createDoneBarButtonItem() {
@@ -66,6 +97,31 @@ class CreateAccountViewController: UIViewController, UITableViewDelegate, UITabl
     }
 
     @objc func saveNewAccount(){
+        //  check initial balance
+        let balaneCell = tbContent.cellForRow(at: IndexPath(row: 0, section: 0)) as! BalanceCell
+        let balance:String = balaneCell.tfAmount.text!
+        if balance.count == 0 {
+            self.view.makeToast(NSLocalizedString("Initial balance invalid. Please check again!", comment: ""), duration: 1.0, position: CSToastPositionCenter)
+            return
+        }
+        
+        //  check account name
+        let accountCell = tbContent.cellForRow(at: IndexPath(row: 0, section: 1)) as! AmountDetailCell
+        let accountName:String = accountCell.tfContent.text!
+        if accountName.count == 0 {
+            self.view.makeToast(NSLocalizedString("Account name invalid. Please check again!", comment: ""), duration: 1.0, position: CSToastPositionCenter)
+            return
+        }
+        
+        //  Description
+        let descCell = tbContent.cellForRow(at: IndexPath(row: 0, section: 3)) as! AmountDetailCell
+        let description:String = descCell.tfContent.text ?? ""
+        
+        let exists:Bool = walletAccModel.checkWalletAcountExists(accountName: accountName)
+        if exists {
+            self.view.makeToast(NSLocalizedString("Account name was exists. Please try with another account name!", comment: ""), duration: 1.0, position: CSToastPositionCenter)
+            return
+        }
         
     }
 
@@ -92,26 +148,56 @@ class CreateAccountViewController: UIViewController, UITableViewDelegate, UITabl
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             let identifier:String = "BalanceCell"
-            var cell:BalanceCell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! BalanceCell
+            let cell:BalanceCell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! BalanceCell
+            cell.selectionStyle = .none
+            cell.tfAmount.keyboardType = .numberPad
             
             return cell
             
         }else{
             let identifier:String = "AmountDetailCell"
-            var cell:AmountDetailCell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! AmountDetailCell
+            let cell:AmountDetailCell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! AmountDetailCell
+            cell.selectionStyle = .none
             
             if indexPath.row == 0 {
                 cell.imgType.image = UIImage(named: "ic_wallet_gray")
+                cell.tfContent.placeholder = NSLocalizedString("Account name", comment: "")
+                cell.imgArrow.isHidden = true
                 
             }else if indexPath.row == 1 {
-                cell.imgType.image = UIImage(named: "ic_money")
+                cell.tfContent.isEnabled = false
+                if accountType == 1 {
+                    cell.imgType.image = UIImage(named: "ic_money")
+                    cell.tfContent.text = NSLocalizedString("Cash", comment: "")
+                }else{
+                    cell.imgType.image = UIImage(named: "ic_bank")
+                    cell.tfContent.text = NSLocalizedString("Bank Account", comment: "")
+                }
+                cell.imgArrow.isHidden = false
                 
             }else if indexPath.row == 2 {
+                cell.tfContent.isEnabled = false
+                
                 cell.imgType.image = UIImage(named: "ic_dollar")
+                cell.tfContent.text = "VND"
+                cell.imgArrow.isHidden = false
+                
+            }else{
+                cell.imgType.image = UIImage(named: "description")
+                cell.tfContent.placeholder = NSLocalizedString("Description", comment: "")
+                cell.imgArrow.isHidden = true
             }
-            
             return cell
-            
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 1 && indexPath.row == 1 {
+            let popup:ChooseAccountTypePopupView = ChooseAccountTypePopupView()
+            popup.setupUIWithFrame(frame: CGRect(x: (UIScreen.main.bounds.size.width-280)/2, y: (UIScreen.main.bounds.size.height-150)/2, width: 280, height: 150))
+            popup.curType = accountType
+            popup.delegate = self
+            popup.showInView(aView: self.view, animated: true)
         }
     }
     
@@ -120,6 +206,20 @@ class CreateAccountViewController: UIViewController, UITableViewDelegate, UITabl
             return 95.0
         }else{
             return 60.0
+        }
+    }
+    
+    //  MARK: Choose account type popup delegate
+    func selectAccountType(type: Int) {
+        accountType = type
+        
+        let curCell = tbContent.cellForRow(at: IndexPath(row: 1, section: 1)) as! AmountDetailCell
+        if accountType == 1 {
+            curCell.imgType.image = UIImage(named: "ic_money")
+            curCell.tfContent.text = NSLocalizedString("Cash", comment: "")
+        }else{
+            curCell.imgType.image = UIImage(named: "ic_bank")
+            curCell.tfContent.text = NSLocalizedString("Bank Account", comment: "")
         }
     }
     

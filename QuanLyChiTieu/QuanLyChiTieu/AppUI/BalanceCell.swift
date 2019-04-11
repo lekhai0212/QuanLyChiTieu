@@ -19,7 +19,9 @@ class BalanceCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        self.contentView.backgroundColor = UIColor.white
         
+        lbAmount.text = NSLocalizedString("Initial balance", comment: "")
         lbAmount.font = UIFont.systemFont(ofSize: 14.0, weight: .thin)
         lbAmount.textColor = UIColor(red: 80/255.0, green: 80/255.0, blue: 80/255.0, alpha: 1.0)
         lbAmount.mas_makeConstraints { (make:MASConstraintMaker?) in
@@ -38,7 +40,10 @@ class BalanceCell: UITableViewCell {
             make?.width.mas_equalTo()(35.0)
         }
         
-        tfAmount.font = UIFont.systemFont(ofSize: 28.0, weight: .thin)
+        tfAmount.text = "0"
+        tfAmount.textAlignment = .right
+        tfAmount.borderStyle = .none
+        tfAmount.font = UIFont.systemFont(ofSize: 34.0, weight: .bold)
         tfAmount.textColor = UIColor(red: 0, green: 0.686, blue: 0.94, alpha: 1.0)
         tfAmount.mas_makeConstraints { (make:MASConstraintMaker?) in
             make?.left.equalTo()(lbAmount)

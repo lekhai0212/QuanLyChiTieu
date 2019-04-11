@@ -34,3 +34,14 @@
 "Recent transactions" = "Recent transactions";
 
 "Add account" = "Add account";
+
+"Initial balance" = "Initial balance";
+"Account name" = "Account name";
+"Cash" = "Cash";
+"Bank Account" = "Bank Account";
+"Save" = "Save";
+"Select account type" = "Select account type";
+"Description" = "Description";
+"Initial balance invalid. Please check again!" = "Initial balance invalid. Please check again!";
+"Account name invalid. Please check again!" = "Account name invalid. Please check again!";
+"Account name was exists. Please try with another account name!" = "Account name was exists. Please try with another account name!";

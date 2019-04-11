@@ -57,6 +57,12 @@
 		15ADD247225B2BAC00A8F3CE /* ic_email.png in Resources */ = {isa = PBXBuildFile; fileRef = 15ADD245225B2BAC00A8F3CE /* ic_email.png */; };
 		15ADD249225B3AC900A8F3CE /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 15ADD248225B3AC800A8F3CE /* logo.png */; };
 		15ADD24B225B405400A8F3CE /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15ADD24A225B405400A8F3CE /* RegisterViewController.swift */; };
+		843E38D8225E3E4A0044610A /* ChooseAccountTypePopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843E38D7225E3E4A0044610A /* ChooseAccountTypePopupView.swift */; };
+		843E38DC225E43160044610A /* AccountTypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843E38DA225E43160044610A /* AccountTypeCell.swift */; };
+		843E38DD225E43160044610A /* AccountTypeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 843E38DB225E43160044610A /* AccountTypeCell.xib */; };
+		843E38DF225E43D80044610A /* choosed.png in Resources */ = {isa = PBXBuildFile; fileRef = 843E38DE225E43D60044610A /* choosed.png */; };
+		84BD2DAF225EACDA00F72238 /* description.png in Resources */ = {isa = PBXBuildFile; fileRef = 84BD2DAE225EACD900F72238 /* description.png */; };
+		84BD2DB2225EB67F00F72238 /* WalletAccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BD2DB1225EB67F00F72238 /* WalletAccountModel.swift */; };
 		84C2214A225D691600C4ECFE /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C22149225D691600C4ECFE /* HomeViewController.swift */; };
 		C6C1B1823237D2A0C8D1F2CA /* Pods_QuanLyChiTieu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E60493C999FD289F2985B24 /* Pods_QuanLyChiTieu.framework */; };
 /* End PBXBuildFile section */
@@ -118,6 +124,12 @@
 		15ADD245225B2BAC00A8F3CE /* ic_email.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_email.png; sourceTree = "<group>"; };
 		15ADD248225B3AC800A8F3CE /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		15ADD24A225B405400A8F3CE /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		843E38D7225E3E4A0044610A /* ChooseAccountTypePopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseAccountTypePopupView.swift; sourceTree = "<group>"; };
+		843E38DA225E43160044610A /* AccountTypeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTypeCell.swift; sourceTree = "<group>"; };
+		843E38DB225E43160044610A /* AccountTypeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountTypeCell.xib; sourceTree = "<group>"; };
+		843E38DE225E43D60044610A /* choosed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = choosed.png; sourceTree = "<group>"; };
+		84BD2DAE225EACD900F72238 /* description.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = description.png; sourceTree = "<group>"; };
+		84BD2DB1225EB67F00F72238 /* WalletAccountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletAccountModel.swift; sourceTree = "<group>"; };
 		84C22142225D66BB00C4ECFE /* AppString.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppString.h; sourceTree = "<group>"; };
 		84C22145225D688D00C4ECFE /* QuanLyChiTieu-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "QuanLyChiTieu-Bridging-Header.h"; sourceTree = "<group>"; };
 		84C22149225D691600C4ECFE /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -153,6 +165,9 @@
 				153A25E6225DF92F00BEBD39 /* AmountDetailCell.xib */,
 				153A25E9225DF94200BEBD39 /* AmoutDetailDescCell.swift */,
 				153A25EA225DF94200BEBD39 /* AmoutDetailDescCell.xib */,
+				843E38D7225E3E4A0044610A /* ChooseAccountTypePopupView.swift */,
+				843E38DA225E43160044610A /* AccountTypeCell.swift */,
+				843E38DB225E43160044610A /* AccountTypeCell.xib */,
 			);
 			path = AppUI;
 			sourceTree = "<group>";
@@ -169,6 +184,7 @@
 			isa = PBXGroup;
 			children = (
 				1588698B225C5098000FC0E5 /* AccountModel.swift */,
+				84BD2DB1225EB67F00F72238 /* WalletAccountModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -252,6 +268,8 @@
 				153A25F0225E065B00BEBD39 /* ic_money.png */,
 				153A25F4225E076F00BEBD39 /* ic_wallet_gray.png */,
 				153A25F6225E081100BEBD39 /* ic_dollar.png */,
+				843E38DE225E43D60044610A /* choosed.png */,
+				84BD2DAE225EACD900F72238 /* description.png */,
 			);
 			path = images;
 			sourceTree = "<group>";
@@ -337,6 +355,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				153A25DD225DE6F800BEBD39 /* add_white.png in Resources */,
+				84BD2DAF225EACDA00F72238 /* description.png in Resources */,
 				153A25CE225DAEC500BEBD39 /* right-arrow.png in Resources */,
 				153A25F2225E065C00BEBD39 /* ic_money.png in Resources */,
 				153A25F3225E065C00BEBD39 /* ic_bank.png in Resources */,
@@ -345,6 +364,7 @@
 				153A25D9225DD6D900BEBD39 /* ActionCell.xib in Resources */,
 				15ADD227225AFD4600A8F3CE /* LaunchScreen.storyboard in Resources */,
 				153A25B7225D9F9E00BEBD39 /* tabbar_overview@2x.png in Resources */,
+				843E38DF225E43D80044610A /* choosed.png in Resources */,
 				153A25F7225E081200BEBD39 /* ic_dollar.png in Resources */,
 				15ADD23D225B090C00A8F3CE /* Localizable.strings in Resources */,
 				153A25BE225DA0E100BEBD39 /* tabbar_wallet.png in Resources */,
@@ -355,6 +375,7 @@
 				153A25CC225DAE4600BEBD39 /* WalletInfoCell.xib in Resources */,
 				15ADD249225B3AC900A8F3CE /* logo.png in Resources */,
 				153A25D5225DD14500BEBD39 /* ReceiptAndExpenseCell.xib in Resources */,
+				843E38DD225E43160044610A /* AccountTypeCell.xib in Resources */,
 				15ADD247225B2BAC00A8F3CE /* ic_email.png in Resources */,
 				153A25E8225DF92F00BEBD39 /* AmountDetailCell.xib in Resources */,
 				153A25BD225DA0E100BEBD39 /* tabbar_wallet@2x.png in Resources */,
@@ -419,12 +440,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84BD2DB2225EB67F00F72238 /* WalletAccountModel.swift in Sources */,
+				843E38D8225E3E4A0044610A /* ChooseAccountTypePopupView.swift in Sources */,
 				153A25DB225DE47000BEBD39 /* CreateAccountViewController.swift in Sources */,
 				15ADD22F225AFFA700A8F3CE /* SignInViewController.swift in Sources */,
 				153A25E2225DF39000BEBD39 /* BalanceCell.swift in Sources */,
 				1588698C225C5098000FC0E5 /* AccountModel.swift in Sources */,
 				15ADD24B225B405400A8F3CE /* RegisterViewController.swift in Sources */,
 				15ADD222225AFD4300A8F3CE /* QuanLyChiTieu.xcdatamodeld in Sources */,
+				843E38DC225E43160044610A /* AccountTypeCell.swift in Sources */,
 				153A25D1225DAF5800BEBD39 /* StringsUtil.swift in Sources */,
 				153A25E7225DF92F00BEBD39 /* AmountDetailCell.swift in Sources */,
 				15ADD21C225AFD4300A8F3CE /* ViewController.swift in Sources */,

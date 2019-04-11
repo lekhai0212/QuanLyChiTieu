@@ -23,18 +23,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIBarButtonItem.appearance().setTitleTextAttributes(attributes, for: .highlighted)
         
         //  check login state
-        let username:String = UserDefaults.standard.value(forKey: key_username) as! String
-        let password:String = UserDefaults.standard.value(forKey: key_password) as! String
-        if username.count > 0 && password.count > 0 {
+        let username = UserDefaults.standard.value(forKey: key_username)
+        let password = UserDefaults.standard.value(forKey: key_password)
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        
+        if username != nil || password != nil {
+            let username:String = UserDefaults.standard.value(forKey: key_username) as! String
+            let password:String = UserDefaults.standard.value(forKey: key_password) as! String
             
-            let homeVC = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
-            
-            self.window?.rootViewController = homeVC
+            if username.count > 0 && password.count > 0 {
+                
+                let homeVC = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
+                
+                self.window?.rootViewController = homeVC
+            }else{
+                let signInVC = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "SignInViewController") as! SignInViewController
+                
+                let navController = UINavigationController()
+                navController.viewControllers = [signInVC]
+                self.window?.rootViewController = navController
+            }
         }else{
             let signInVC = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "SignInViewController") as! SignInViewController
             
-            self.window?.rootViewController = signInVC
+            let navController = UINavigationController()
+            navController.viewControllers = [signInVC]
+            self.window?.rootViewController = navController
         }
+        self.window?.makeKeyAndVisible()
         
         return true
     }

@@ -34,3 +34,14 @@
 "Expense vs income" = "Tình hình thu chi";
 "Recent transactions" = "Ghi chép gần đây";
 "Add account" = "Thêm tài khoản";
+
+"Initial balance" = "Số dư ban đầu";
+"Account name" = "Tên tài khoản";
+"Cash" = "Tiền mặt";
+"Bank Account" = "Tài khoản ngân hàng";
+"Save" = "Lưu";
+"Select account type" = "Chọn loại tài khoản";
+"Description" = "Mô tả";
+"Initial balance invalid. Please check again!" = "Tải khoản ban đầu không hợp lệ. Vui lòng kiểm tra lại!";
+"Account name invalid. Please check again!" = "Tên tài khoản không hợp lệ. Vui lòng kiểm tra lại!";
+"Account name was exists. Please try with another account name!" = "Tên tài khoản đã tồn tại. Vui lòng thử lại với tên tài khoản khác!";

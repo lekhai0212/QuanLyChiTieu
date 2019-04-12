@@ -55,7 +55,7 @@ class AmountDetailCell: UITableViewCell {
         var sizeIcon:CGFloat!
         var left:CGFloat!
         var font:UIFont!
-        ssss
+        
         if large {
             sizeIcon = 35.0
             left = 7.5

@@ -24,11 +24,17 @@ class HomeViewController: UIViewController {
         let accountVC = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "AccountViewController") as! AccountViewController
         accountVC.tabBarItem = UITabBarItem.init(title: NSLocalizedString("Account", comment: ""), image: UIImage(named: "tabbar_wallet"), tag: 1)
         
+        let createActionVC = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "ActionViewController") as! ActionViewController
+        createActionVC.tabBarItem = UITabBarItem(title: NSLocalizedString("Add note", comment: ""), image: UIImage(named: "tabbar_add"), tag: 2)
+        
+        let savingAccVC = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "SavingAccountViewController") as! SavingAccountViewController
+        savingAccVC.tabBarItem = UITabBarItem(title: NSLocalizedString("Saving Account", comment: ""), image: UIImage(named: "tabbar_saving"), tag: 3)
+        
         let moreVC = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "MoreViewController") as! MoreViewController
-        moreVC.tabBarItem = UITabBarItem.init(title: NSLocalizedString("More", comment: ""), image: UIImage(named: "tabbar_more"), tag: 2)
+        moreVC.tabBarItem = UITabBarItem.init(title: NSLocalizedString("More", comment: ""), image: UIImage(named: "tabbar_more"), tag: 4)
         
         
-        let controllerArray = [overviewVC, accountVC, moreVC]
+        let controllerArray = [overviewVC, accountVC, createActionVC, savingAccVC, moreVC]
         tabBarVC.viewControllers = controllerArray.map{ UINavigationController.init(rootViewController: $0)}
         self.view.addSubview(tabBarVC.view)
     }

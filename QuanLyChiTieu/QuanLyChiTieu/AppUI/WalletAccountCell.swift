@@ -28,7 +28,7 @@ class WalletAccountCell: UITableViewCell {
         imgType.mas_makeConstraints { (make:MASConstraintMaker?) in
             make?.left.equalTo()(self)?.offset()(15.0)
             make?.centerY.equalTo()(self.mas_centerY)
-            make?.width.height().mas_equalTo()(32.0)
+            make?.width.height().mas_equalTo()(36.0)
         }
         
         icMore.imageEdgeInsets = UIEdgeInsetsMake(8, 8, 8, 8)

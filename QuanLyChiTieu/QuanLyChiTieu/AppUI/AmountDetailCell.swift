@@ -50,6 +50,28 @@ class AmountDetailCell: UITableViewCell {
             make?.height.mas_equalTo()(1.0)
         }
     }
+    
+    func setupCellWithLargeIcon(large:Bool) {
+        var sizeIcon:CGFloat!
+        var left:CGFloat!
+        var font:UIFont!
+        ssss
+        if large {
+            sizeIcon = 35.0
+            left = 7.5
+            font = UIFont.systemFont(ofSize: 17.0, weight: .bold)
+        }else{
+            sizeIcon = 22.0
+            left = 15.0
+            font = UIFont.systemFont(ofSize: 17.0, weight: .regular)
+        }
+        
+        imgType.mas_makeConstraints { (make:MASConstraintMaker?) in
+            make?.left.equalTo()(self)?.offset()(left)
+            make?.centerY.equalTo()(self.mas_centerY)
+            make?.width.height().mas_equalTo()(sizeIcon)
+        }
+    }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

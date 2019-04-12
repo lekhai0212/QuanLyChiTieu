@@ -45,6 +45,17 @@
 		153A25F3225E065C00BEBD39 /* ic_bank.png in Resources */ = {isa = PBXBuildFile; fileRef = 153A25F1225E065B00BEBD39 /* ic_bank.png */; };
 		153A25F5225E077000BEBD39 /* ic_wallet_gray.png in Resources */ = {isa = PBXBuildFile; fileRef = 153A25F4225E076F00BEBD39 /* ic_wallet_gray.png */; };
 		153A25F7225E081200BEBD39 /* ic_dollar.png in Resources */ = {isa = PBXBuildFile; fileRef = 153A25F6225E081100BEBD39 /* ic_dollar.png */; };
+		1574B45922608AEA00904619 /* SavingAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1574B45822608AEA00904619 /* SavingAccountViewController.swift */; };
+		1574B45B22608B6400904619 /* ActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1574B45A22608B6400904619 /* ActionViewController.swift */; };
+		1574B45F22608C8900904619 /* tabbar_add.png in Resources */ = {isa = PBXBuildFile; fileRef = 1574B45C22608C8800904619 /* tabbar_add.png */; };
+		1574B46022608C8900904619 /* tabbar_add@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1574B45D22608C8900904619 /* tabbar_add@2x.png */; };
+		1574B46122608C8900904619 /* tabbar_add@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1574B45E22608C8900904619 /* tabbar_add@3x.png */; };
+		1574B46522608D1E00904619 /* tabbar_saving.png in Resources */ = {isa = PBXBuildFile; fileRef = 1574B46222608D1D00904619 /* tabbar_saving.png */; };
+		1574B46622608D1E00904619 /* tabbar_saving@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1574B46322608D1E00904619 /* tabbar_saving@3x.png */; };
+		1574B46722608D1E00904619 /* tabbar_saving@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1574B46422608D1E00904619 /* tabbar_saving@2x.png */; };
+		1574B46B2260970F00904619 /* tabbar_plus@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1574B4682260970E00904619 /* tabbar_plus@3x.png */; };
+		1574B46C2260970F00904619 /* tabbar_plus@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1574B4692260970F00904619 /* tabbar_plus@2x.png */; };
+		1574B46D2260970F00904619 /* tabbar_plus.png in Resources */ = {isa = PBXBuildFile; fileRef = 1574B46A2260970F00904619 /* tabbar_plus.png */; };
 		15886986225C3D79000FC0E5 /* pass_show.png in Resources */ = {isa = PBXBuildFile; fileRef = 15886984225C3D78000FC0E5 /* pass_show.png */; };
 		15886987225C3D79000FC0E5 /* pass_hide.png in Resources */ = {isa = PBXBuildFile; fileRef = 15886985225C3D78000FC0E5 /* pass_hide.png */; };
 		15886989225C4BB7000FC0E5 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15886988225C4BB6000FC0E5 /* CoreData.framework */; };
@@ -111,6 +122,17 @@
 		153A25F1225E065B00BEBD39 /* ic_bank.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_bank.png; sourceTree = "<group>"; };
 		153A25F4225E076F00BEBD39 /* ic_wallet_gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_wallet_gray.png; sourceTree = "<group>"; };
 		153A25F6225E081100BEBD39 /* ic_dollar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_dollar.png; sourceTree = "<group>"; };
+		1574B45822608AEA00904619 /* SavingAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingAccountViewController.swift; sourceTree = "<group>"; };
+		1574B45A22608B6400904619 /* ActionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionViewController.swift; sourceTree = "<group>"; };
+		1574B45C22608C8800904619 /* tabbar_add.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabbar_add.png; sourceTree = "<group>"; };
+		1574B45D22608C8900904619 /* tabbar_add@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar_add@2x.png"; sourceTree = "<group>"; };
+		1574B45E22608C8900904619 /* tabbar_add@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar_add@3x.png"; sourceTree = "<group>"; };
+		1574B46222608D1D00904619 /* tabbar_saving.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabbar_saving.png; sourceTree = "<group>"; };
+		1574B46322608D1E00904619 /* tabbar_saving@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar_saving@3x.png"; sourceTree = "<group>"; };
+		1574B46422608D1E00904619 /* tabbar_saving@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar_saving@2x.png"; sourceTree = "<group>"; };
+		1574B4682260970E00904619 /* tabbar_plus@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar_plus@3x.png"; sourceTree = "<group>"; };
+		1574B4692260970F00904619 /* tabbar_plus@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar_plus@2x.png"; sourceTree = "<group>"; };
+		1574B46A2260970F00904619 /* tabbar_plus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabbar_plus.png; sourceTree = "<group>"; };
 		15886984225C3D78000FC0E5 /* pass_show.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pass_show.png; sourceTree = "<group>"; };
 		15886985225C3D78000FC0E5 /* pass_hide.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pass_hide.png; sourceTree = "<group>"; };
 		15886988225C4BB6000FC0E5 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -233,6 +255,8 @@
 				153A25A3225D959A00BEBD39 /* OverviewViewController.swift */,
 				153A25A5225D961400BEBD39 /* AccountViewController.swift */,
 				153A25DA225DE47000BEBD39 /* CreateAccountViewController.swift */,
+				1574B45A22608B6400904619 /* ActionViewController.swift */,
+				1574B45822608AEA00904619 /* SavingAccountViewController.swift */,
 				153A25C6225DA2B900BEBD39 /* MoreViewController.swift */,
 				15ADD21D225AFD4300A8F3CE /* Main.storyboard */,
 				15ADD223225AFD4600A8F3CE /* Assets.xcassets */,
@@ -271,6 +295,15 @@
 				153A25C0225DA2AC00BEBD39 /* tabbar_more.png */,
 				153A25C2225DA2AD00BEBD39 /* tabbar_more@2x.png */,
 				153A25C1225DA2AC00BEBD39 /* tabbar_more@3x.png */,
+				1574B45C22608C8800904619 /* tabbar_add.png */,
+				1574B45D22608C8900904619 /* tabbar_add@2x.png */,
+				1574B45E22608C8900904619 /* tabbar_add@3x.png */,
+				1574B46222608D1D00904619 /* tabbar_saving.png */,
+				1574B46422608D1E00904619 /* tabbar_saving@2x.png */,
+				1574B46322608D1E00904619 /* tabbar_saving@3x.png */,
+				1574B46A2260970F00904619 /* tabbar_plus.png */,
+				1574B4692260970F00904619 /* tabbar_plus@2x.png */,
+				1574B4682260970E00904619 /* tabbar_plus@3x.png */,
 				153A25CD225DAEC400BEBD39 /* right-arrow.png */,
 				153A25DC225DE6F800BEBD39 /* add_white.png */,
 				153A25DE225DEFCB00BEBD39 /* tick_white.png */,
@@ -367,30 +400,38 @@
 			buildActionMask = 2147483647;
 			files = (
 				153A25DD225DE6F800BEBD39 /* add_white.png in Resources */,
+				1574B46C2260970F00904619 /* tabbar_plus@2x.png in Resources */,
 				84BD2DAF225EACDA00F72238 /* description.png in Resources */,
 				153A25CE225DAEC500BEBD39 /* right-arrow.png in Resources */,
 				153A25F2225E065C00BEBD39 /* ic_money.png in Resources */,
 				153A25F3225E065C00BEBD39 /* ic_bank.png in Resources */,
 				153A25C3225DA2AE00BEBD39 /* tabbar_more.png in Resources */,
+				1574B46022608C8900904619 /* tabbar_add@2x.png in Resources */,
 				153A25B8225D9F9E00BEBD39 /* tabbar_overview.png in Resources */,
 				153A25D9225DD6D900BEBD39 /* ActionCell.xib in Resources */,
 				15ADD227225AFD4600A8F3CE /* LaunchScreen.storyboard in Resources */,
 				15214200225F4E7F00ACD6D3 /* more_vertical.png in Resources */,
+				1574B46B2260970F00904619 /* tabbar_plus@3x.png in Resources */,
+				1574B46622608D1E00904619 /* tabbar_saving@3x.png in Resources */,
 				153A25B7225D9F9E00BEBD39 /* tabbar_overview@2x.png in Resources */,
 				843E38DF225E43D80044610A /* choosed.png in Resources */,
 				153A25F7225E081200BEBD39 /* ic_dollar.png in Resources */,
 				152141FE225F4DCC00ACD6D3 /* WalletAccountCell.xib in Resources */,
 				15ADD23D225B090C00A8F3CE /* Localizable.strings in Resources */,
+				1574B45F22608C8900904619 /* tabbar_add.png in Resources */,
 				153A25BE225DA0E100BEBD39 /* tabbar_wallet.png in Resources */,
 				153A25BF225DA0E100BEBD39 /* tabbar_wallet@3x.png in Resources */,
+				1574B46122608C8900904619 /* tabbar_add@3x.png in Resources */,
 				15ADD224225AFD4600A8F3CE /* Assets.xcassets in Resources */,
 				153A25EC225DF94200BEBD39 /* AmoutDetailDescCell.xib in Resources */,
 				15ADD246225B2BAC00A8F3CE /* ic_lock.png in Resources */,
 				153A25CC225DAE4600BEBD39 /* WalletInfoCell.xib in Resources */,
+				1574B46D2260970F00904619 /* tabbar_plus.png in Resources */,
 				15ADD249225B3AC900A8F3CE /* logo.png in Resources */,
 				153A25D5225DD14500BEBD39 /* ReceiptAndExpenseCell.xib in Resources */,
 				843E38DD225E43160044610A /* AccountTypeCell.xib in Resources */,
 				15ADD247225B2BAC00A8F3CE /* ic_email.png in Resources */,
+				1574B46722608D1E00904619 /* tabbar_saving@2x.png in Resources */,
 				153A25E8225DF92F00BEBD39 /* AmountDetailCell.xib in Resources */,
 				153A25BD225DA0E100BEBD39 /* tabbar_wallet@2x.png in Resources */,
 				15886987225C3D79000FC0E5 /* pass_hide.png in Resources */,
@@ -398,6 +439,7 @@
 				153A25C5225DA2AE00BEBD39 /* tabbar_more@2x.png in Resources */,
 				15ADD21F225AFD4300A8F3CE /* Main.storyboard in Resources */,
 				153A25EE225DFB0000BEBD39 /* arrow_gray.png in Resources */,
+				1574B46522608D1E00904619 /* tabbar_saving.png in Resources */,
 				153A25DF225DEFCC00BEBD39 /* tick_white.png in Resources */,
 				153A25B9225D9F9E00BEBD39 /* tabbar_overview@3x.png in Resources */,
 				153A25E3225DF39000BEBD39 /* BalanceCell.xib in Resources */,
@@ -462,6 +504,7 @@
 				153A25E2225DF39000BEBD39 /* BalanceCell.swift in Sources */,
 				15214202225F51A800ACD6D3 /* WalletAccountObj.swift in Sources */,
 				1588698C225C5098000FC0E5 /* AccountModel.swift in Sources */,
+				1574B45922608AEA00904619 /* SavingAccountViewController.swift in Sources */,
 				15ADD24B225B405400A8F3CE /* RegisterViewController.swift in Sources */,
 				15ADD222225AFD4300A8F3CE /* QuanLyChiTieu.xcdatamodeld in Sources */,
 				843E38DC225E43160044610A /* AccountTypeCell.swift in Sources */,
@@ -474,6 +517,7 @@
 				153A25CB225DAE4600BEBD39 /* WalletInfoCell.swift in Sources */,
 				84C2214A225D691600C4ECFE /* HomeViewController.swift in Sources */,
 				15ADD21A225AFD4300A8F3CE /* AppDelegate.swift in Sources */,
+				1574B45B22608B6400904619 /* ActionViewController.swift in Sources */,
 				153A25A6225D961400BEBD39 /* AccountViewController.swift in Sources */,
 				153A25EB225DF94200BEBD39 /* AmoutDetailDescCell.swift in Sources */,
 				153A25D8225DD6D900BEBD39 /* ActionCell.swift in Sources */,

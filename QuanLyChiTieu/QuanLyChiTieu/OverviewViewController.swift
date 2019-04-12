@@ -16,13 +16,14 @@ class OverviewViewController: UIViewController, UITableViewDataSource, UITableVi
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.setupUIForView()
         self.automaticallyAdjustsScrollViewInsets = false
         
         self.title = NSLocalizedString("Overview", comment: "")
         self.navigationController?.navigationBar.barTintColor = UIColor.init(red: 0, green: 0.686, blue: 0.94, alpha: 1.0)
         self.navigationController?.navigationBar.tintColor = UIColor.white
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+        
+        self.setupUIForView()
     }
 
     override func didReceiveMemoryWarning() {

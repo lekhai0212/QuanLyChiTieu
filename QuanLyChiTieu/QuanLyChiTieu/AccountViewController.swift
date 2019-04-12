@@ -47,15 +47,34 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
             lbNoData.isHidden = true
             
             var totalBalance = self.getTotalBalance()
-            totalBalance = String(format: "$%.02f", totalBalance)
-            
+            totalBalance = StringsUtil.currencyFormatting(str: totalBalance)
             lbTotalBalane.text = NSLocalizedString("Total banlance", comment: "") + ": " + totalBalance
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if tbContent.frame.size.height < tbContent.contentSize.height {
+            tbContent.isScrollEnabled = true
+        }else{
+            tbContent.isScrollEnabled = false
         }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func currencyFormatting(str:String) -> String {
+        if let value = Double(str) {
+            let formatter = NumberFormatter()
+            formatter.numberStyle = .currency
+            formatter.maximumFractionDigits = 2
+            if let str = formatter.string(for: value) {
+                return str
+            }
+        }
+        return ""
     }
     
     func getTotalBalance() -> String {
@@ -69,6 +88,7 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func setupUIForView() {
+        self.view.backgroundColor = UIColor(red: 235/255.0, green: 235/255.0, blue: 235/255.0, alpha: 1.0)
         self.automaticallyAdjustsScrollViewInsets = false
         
         let originY:CGFloat = UIApplication.shared.statusBarFrame.size.height + (self.navigationController?.navigationBar.frame.size.height)!
@@ -77,7 +97,7 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
         lbTotalBalane.textAlignment = .center
         lbTotalBalane.font = UIFont.systemFont(ofSize: 20.0, weight: .semibold)
         lbTotalBalane.backgroundColor = UIColor.white
-        lbTotalBalane.textColor = UIColor.black
+        lbTotalBalane.textColor = UIColor(red: 80/255.0, green: 80/255.0, blue: 80/255.0, alpha: 1.0)
         lbTotalBalane.mas_makeConstraints { (make:MASConstraintMaker?) in
             make?.top.equalTo()(self.view)?.offset()(originY)
             make?.left.right().equalTo()(self.view)
@@ -85,10 +105,12 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
         
         tbContent.register(UINib(nibName: "WalletAccountCell", bundle: nil), forCellReuseIdentifier: "WalletAccountCell")
+        tbContent.backgroundColor = UIColor.white
+        tbContent.separatorStyle = .none
         tbContent.delegate = self
         tbContent.dataSource = self
         tbContent.mas_makeConstraints { (make:MASConstraintMaker?) in
-            make?.top.equalTo()(lbTotalBalane.mas_bottom)?.offset()(5.0)
+            make?.top.equalTo()(lbTotalBalane.mas_bottom)?.offset()(12.0)
             make?.left.right().equalTo()(self.view)
             make?.bottom.equalTo()(self.view)?.offset()(-tabHeight)
         }
@@ -143,7 +165,7 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
 
         cell.lbName.text = walletObj.accountName
-        cell.lbMoney.text = walletObj.initialBalance
+        cell.lbMoney.text = StringsUtil.currencyFormatting(str: walletObj.initialBalance)
         
         return cell
     }

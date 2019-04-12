@@ -14,4 +14,17 @@ class StringsUtil: NSObject {
         let size:CGSize = content.size(withAttributes: fontAttributes)
         return size.width
     }
+    
+    class func currencyFormatting(str:String) -> String {
+        if let value = Double(str) {
+            let formatter = NumberFormatter()
+            formatter.numberStyle = .currency
+            formatter.maximumFractionDigits = 2
+            formatter.positiveFormat = "#,##0 ¤"
+            if let str = formatter.string(for: value) {
+                return str
+            }
+        }
+        return ""
+    }
 }

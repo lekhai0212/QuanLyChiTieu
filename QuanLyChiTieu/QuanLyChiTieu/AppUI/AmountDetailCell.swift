@@ -57,16 +57,17 @@ class AmountDetailCell: UITableViewCell {
         var font:UIFont!
         
         if large {
-            sizeIcon = 35.0
-            left = 7.5
-            font = UIFont.systemFont(ofSize: 17.0, weight: .bold)
+            sizeIcon = 38.0
+            left = 10.0
+            font = UIFont.systemFont(ofSize: 22.0, weight: .bold)
         }else{
             sizeIcon = 22.0
-            left = 15.0
+            left = 20.0
             font = UIFont.systemFont(ofSize: 17.0, weight: .regular)
         }
         
-        imgType.mas_makeConstraints { (make:MASConstraintMaker?) in
+        tfContent.font = font
+        imgType.mas_remakeConstraints { (make:MASConstraintMaker?) in
             make?.left.equalTo()(self)?.offset()(left)
             make?.centerY.equalTo()(self.mas_centerY)
             make?.width.height().mas_equalTo()(sizeIcon)
@@ -77,5 +78,13 @@ class AmountDetailCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    override func setHighlighted(_ highlighted: Bool, animated: Bool) {
+        if highlighted {
+            self.contentView.backgroundColor = UIColor(red: 245/255.0, green: 245/255.0, blue: 245/255.0, alpha: 1.0)
+        }else{
+            self.contentView.backgroundColor = UIColor.white
+        }
     }
 }

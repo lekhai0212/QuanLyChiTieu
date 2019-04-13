@@ -72,6 +72,10 @@
 		15ADD247225B2BAC00A8F3CE /* ic_email.png in Resources */ = {isa = PBXBuildFile; fileRef = 15ADD245225B2BAC00A8F3CE /* ic_email.png */; };
 		15ADD249225B3AC900A8F3CE /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 15ADD248225B3AC800A8F3CE /* logo.png */; };
 		15ADD24B225B405400A8F3CE /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15ADD24A225B405400A8F3CE /* RegisterViewController.swift */; };
+		15E6816E22617E9F002D2211 /* question.png in Resources */ = {isa = PBXBuildFile; fileRef = 15E6816D22617E9E002D2211 /* question.png */; };
+		15E6819322617FF0002D2211 /* calendar.png in Resources */ = {isa = PBXBuildFile; fileRef = 15E6819122617FEF002D2211 /* calendar.png */; };
+		15E6819422617FF0002D2211 /* three_line_blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 15E6819222617FF0002D2211 /* three_line_blue.png */; };
+		15E68199226188BF002D2211 /* SelectCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E68198226188BF002D2211 /* SelectCategoryViewController.swift */; };
 		843E38D8225E3E4A0044610A /* ChooseAccountTypePopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843E38D7225E3E4A0044610A /* ChooseAccountTypePopupView.swift */; };
 		843E38DC225E43160044610A /* AccountTypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843E38DA225E43160044610A /* AccountTypeCell.swift */; };
 		843E38DD225E43160044610A /* AccountTypeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 843E38DB225E43160044610A /* AccountTypeCell.xib */; };
@@ -154,6 +158,10 @@
 		15ADD245225B2BAC00A8F3CE /* ic_email.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_email.png; sourceTree = "<group>"; };
 		15ADD248225B3AC800A8F3CE /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		15ADD24A225B405400A8F3CE /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		15E6816D22617E9E002D2211 /* question.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = question.png; sourceTree = "<group>"; };
+		15E6819122617FEF002D2211 /* calendar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = calendar.png; sourceTree = "<group>"; };
+		15E6819222617FF0002D2211 /* three_line_blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = three_line_blue.png; sourceTree = "<group>"; };
+		15E68198226188BF002D2211 /* SelectCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCategoryViewController.swift; sourceTree = "<group>"; };
 		843E38D7225E3E4A0044610A /* ChooseAccountTypePopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseAccountTypePopupView.swift; sourceTree = "<group>"; };
 		843E38DA225E43160044610A /* AccountTypeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTypeCell.swift; sourceTree = "<group>"; };
 		843E38DB225E43160044610A /* AccountTypeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountTypeCell.xib; sourceTree = "<group>"; };
@@ -258,6 +266,7 @@
 				1574B45A22608B6400904619 /* ActionViewController.swift */,
 				1574B45822608AEA00904619 /* SavingAccountViewController.swift */,
 				153A25C6225DA2B900BEBD39 /* MoreViewController.swift */,
+				15E68198226188BF002D2211 /* SelectCategoryViewController.swift */,
 				15ADD21D225AFD4300A8F3CE /* Main.storyboard */,
 				15ADD223225AFD4600A8F3CE /* Assets.xcassets */,
 				15ADD225225AFD4600A8F3CE /* LaunchScreen.storyboard */,
@@ -315,6 +324,9 @@
 				843E38DE225E43D60044610A /* choosed.png */,
 				84BD2DAE225EACD900F72238 /* description.png */,
 				152141FF225F4E7E00ACD6D3 /* more_vertical.png */,
+				15E6816D22617E9E002D2211 /* question.png */,
+				15E6819122617FEF002D2211 /* calendar.png */,
+				15E6819222617FF0002D2211 /* three_line_blue.png */,
 			);
 			path = images;
 			sourceTree = "<group>";
@@ -409,6 +421,7 @@
 				1574B46022608C8900904619 /* tabbar_add@2x.png in Resources */,
 				153A25B8225D9F9E00BEBD39 /* tabbar_overview.png in Resources */,
 				153A25D9225DD6D900BEBD39 /* ActionCell.xib in Resources */,
+				15E6819422617FF0002D2211 /* three_line_blue.png in Resources */,
 				15ADD227225AFD4600A8F3CE /* LaunchScreen.storyboard in Resources */,
 				15214200225F4E7F00ACD6D3 /* more_vertical.png in Resources */,
 				1574B46B2260970F00904619 /* tabbar_plus@3x.png in Resources */,
@@ -424,6 +437,8 @@
 				1574B46122608C8900904619 /* tabbar_add@3x.png in Resources */,
 				15ADD224225AFD4600A8F3CE /* Assets.xcassets in Resources */,
 				153A25EC225DF94200BEBD39 /* AmoutDetailDescCell.xib in Resources */,
+				15E6819322617FF0002D2211 /* calendar.png in Resources */,
+				15E6816E22617E9F002D2211 /* question.png in Resources */,
 				15ADD246225B2BAC00A8F3CE /* ic_lock.png in Resources */,
 				153A25CC225DAE4600BEBD39 /* WalletInfoCell.xib in Resources */,
 				1574B46D2260970F00904619 /* tabbar_plus.png in Resources */,
@@ -512,6 +527,7 @@
 				153A25E7225DF92F00BEBD39 /* AmountDetailCell.swift in Sources */,
 				15ADD21C225AFD4300A8F3CE /* ViewController.swift in Sources */,
 				153A25C7225DA2BA00BEBD39 /* MoreViewController.swift in Sources */,
+				15E68199226188BF002D2211 /* SelectCategoryViewController.swift in Sources */,
 				153A25D4225DD14500BEBD39 /* ReceiptAndExpenseCell.swift in Sources */,
 				153A25A4225D959A00BEBD39 /* OverviewViewController.swift in Sources */,
 				153A25CB225DAE4600BEBD39 /* WalletInfoCell.swift in Sources */,

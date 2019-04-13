@@ -17,7 +17,7 @@ class ActionViewController: UIViewController, UITableViewDelegate, UITableViewDa
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.title = NSLocalizedString("Account", comment: "")
+        self.title = NSLocalizedString("Add note", comment: "")
         self.navigationController?.navigationBar.barTintColor = UIColor.init(red: 0, green: 0.686, blue: 0.94, alpha: 1.0)
         self.navigationController?.navigationBar.tintColor = UIColor.white
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
@@ -41,6 +41,8 @@ class ActionViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let nibBalance = UINib(nibName: "BalanceCell", bundle: nil)
         let nibDetail = UINib(nibName: "AmountDetailCell", bundle: nil)
         
+        tbContent.sectionHeaderHeight = UITableViewAutomaticDimension;
+        tbContent.sectionFooterHeight = UITableViewAutomaticDimension;
         tbContent.register(nibBalance, forCellReuseIdentifier: "BalanceCell")
         tbContent.register(nibDetail, forCellReuseIdentifier: "AmountDetailCell")
         tbContent.delegate = self
@@ -67,13 +69,63 @@ class ActionViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
-            var cell = tableView.dequeueReusableCell(withIdentifier: "BalanceCell", for: indexPath) as! BalanceCell
-            
+            let cell = tableView.dequeueReusableCell(withIdentifier: "BalanceCell", for: indexPath) as! BalanceCell
+            cell.selectionStyle = .none
+            cell.lbAmount.text = "Số tiền"
             
             return cell
         }else{
-            var cell = tableView.dequeueReusableCell(withIdentifier: "AmountDetailCell", for: indexPath) as! AmountDetailCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "AmountDetailCell", for: indexPath) as! AmountDetailCell
+            cell.selectionStyle = .none
+            if indexPath.row == 0 {
+                cell.setupCellWithLargeIcon(large: true)
+            }else{
+                cell.setupCellWithLargeIcon(large: false)
+            }
+            cell.tfContent.isEnabled = false
+            
+            switch indexPath.row {
+                case 0:do {
+                    cell.tfContent.text = "Chọn hạng mục"
+                    cell.imgType.image = UIImage(named: "question")
+                    cell.imgArrow.isHidden = false
+                    break
+                }
+                
+                case 1: do {
+                    cell.tfContent.text = "Mô tả"
+                    cell.imgType.image = UIImage(named: "three_line_blue")
+                    cell.imgArrow.isHidden = true
+                    break
+                }
+                
+                case 2: do {
+                    cell.tfContent.text = "Thời gian"
+                    cell.imgType.image = UIImage(named: "calendar")
+                    cell.imgArrow.isHidden = false
+                    break
+                }
+                case 3: do {
+                    cell.tfContent.text = "Thời gian"
+                    cell.imgType.image = UIImage(named: "ic_bank")
+                    cell.imgArrow.isHidden = false
+                    break
+                }
+                default:do {
+                    break
+                }
+            }
             return cell
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 1 && indexPath.row == 0 {
+            
+            let categoryVC = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "SelectCategoryViewController") as! SelectCategoryViewController
+            categoryVC.hidesBottomBarWhenPushed = true
+            
+            self.navigationController?.pushViewController(categoryVC, animated: true)
         }
     }
     
@@ -81,15 +133,15 @@ class ActionViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if indexPath.section == 0 {
             return 95.0
         }else{
-            return 55.0
+            return 60.0
         }
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 30.0
+        return 10.0
     }
     
-    func tableView(_ tableView: UITableView, estimatedHeightForFooterInSection section: Int) -> CGFloat {
-        return 1.0
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 0.1
     }
 }

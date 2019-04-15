@@ -51,3 +51,67 @@
 "Your account has been saved successful" = "Tài khoản của bạn đã được tạo thành công";
 "No data" = "Không có dữ liệu";
 "Total banlance" = "Tổng tiền";
+
+"Select category" = "Chọn hạng mục";
+
+"Food and Dining" = "Ăn uống";
+"Bars & Coffee" = "Cafe";
+"Restaurant" = "Đi chợ/siêu thị";
+"Groceries" = "Ăn tiệm";
+
+"Utilities" = "Dịch vụ sinh hoạt";
+"Electricity" = "Điện";
+"Water" = "Nước";
+"Mobile Phone" = "Điện thoại di động";
+"Internet" = "Internet";
+"Gas" = "Gas";
+"Home Phone" = "Điện thoại cố định";
+"CableTV" = "Truyền hình";
+"Hiring Maids" = "Thuê người giúp việc";
+
+"Auto & Transport" = "Đi lại";
+"Fuel" = "Xăng xe";
+"Car Wash" = "Rửa xe";
+"Parking" = "Gửi xe";
+"Repair Vehicles" = "Sửa xe, bảo dưỡng xe";
+"Service & Parts" = "Bảo hiểm xe";
+"Taxi" = "Taxi/thuê xe";
+
+"Clothing" = "Trang phục";
+"Clothes" = "Quần áo";
+"Accessories" = "Phụ kiện khác";
+"Shoes" = "Giày dép";
+
+"Entertainment" = "Hưởng thụ";
+"Music" = "Vui chơi giải trí";
+"Cosmetic" = "Mỹ phẩm";
+"Make up" = "Làm đẹp";
+"Movies & DVDs" = "Phim ảnh ca nhạc";
+"Travel" = "Du lịch";
+
+"Gift & Donations" = "Hiếu hỉ";
+"Charity" = "Thăm hỏi";
+"Funerals" = "Ma chay";
+"Gifts" = "Biếu tặng";
+"Marriages" = "Cưới xin";
+
+"Health & Fitness" = "Sức khoẻ";
+"Doctor" = "Khám chữa bệnh";
+"Pharmacy" = "Thuốc men";
+"Sports" = "Thể thao";
+
+"Home" = "Nhà cửa";
+"Furnishing" = "Mua sắm đồ đạc";
+"Home Services" = "Thuê nhà";
+"Repair of buildings" = "Sửa chữa nhà cửa";
+
+"Kids" = "Con cái";
+"Books" = "Sách vở";
+"Baby Supplies" = "Sữa";
+"Allowance" = "Tiền tiêu vặt";
+"Toys" = "Đồ chơi";
+"Tuition" = "Học phí";
+
+"Personal" = "Phát triển bản thân";
+"Education" = "Học hành";
+"Hobbies" = "Giao lưu/quan hệ";

@@ -76,6 +76,14 @@
 		15E6819322617FF0002D2211 /* calendar.png in Resources */ = {isa = PBXBuildFile; fileRef = 15E6819122617FEF002D2211 /* calendar.png */; };
 		15E6819422617FF0002D2211 /* three_line_blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 15E6819222617FF0002D2211 /* three_line_blue.png */; };
 		15E68199226188BF002D2211 /* SelectCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E68198226188BF002D2211 /* SelectCategoryViewController.swift */; };
+		15EF1E79226DA25B00D4DD6A /* arrow_down.png in Resources */ = {isa = PBXBuildFile; fileRef = 15EF1E78226DA25900D4DD6A /* arrow_down.png */; };
+		15EF1E7B226DA2E700D4DD6A /* CustomTextAttachment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EF1E7A226DA2E700D4DD6A /* CustomTextAttachment.swift */; };
+		15EF1E7E226DA56F00D4DD6A /* arrow_up.png in Resources */ = {isa = PBXBuildFile; fileRef = 15EF1E7D226DA56E00D4DD6A /* arrow_up.png */; };
+		15EF1E81226DB5BE00D4DD6A /* SelectAccountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EF1E7F226DB5BE00D4DD6A /* SelectAccountCell.swift */; };
+		15EF1E82226DB5BE00D4DD6A /* SelectAccountCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15EF1E80226DB5BE00D4DD6A /* SelectAccountCell.xib */; };
+		15EF1E86226DCF1300D4DD6A /* plus.png in Resources */ = {isa = PBXBuildFile; fileRef = 15EF1E83226DCF0F00D4DD6A /* plus.png */; };
+		15EF1E87226DCF1300D4DD6A /* transfer.png in Resources */ = {isa = PBXBuildFile; fileRef = 15EF1E84226DCF1100D4DD6A /* transfer.png */; };
+		15EF1E88226DCF1300D4DD6A /* minus.png in Resources */ = {isa = PBXBuildFile; fileRef = 15EF1E85226DCF1300D4DD6A /* minus.png */; };
 		843E38D8225E3E4A0044610A /* ChooseAccountTypePopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843E38D7225E3E4A0044610A /* ChooseAccountTypePopupView.swift */; };
 		843E38DC225E43160044610A /* AccountTypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843E38DA225E43160044610A /* AccountTypeCell.swift */; };
 		843E38DD225E43160044610A /* AccountTypeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 843E38DB225E43160044610A /* AccountTypeCell.xib */; };
@@ -224,6 +232,14 @@
 		15E6819122617FEF002D2211 /* calendar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = calendar.png; sourceTree = "<group>"; };
 		15E6819222617FF0002D2211 /* three_line_blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = three_line_blue.png; sourceTree = "<group>"; };
 		15E68198226188BF002D2211 /* SelectCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCategoryViewController.swift; sourceTree = "<group>"; };
+		15EF1E78226DA25900D4DD6A /* arrow_down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow_down.png; sourceTree = "<group>"; };
+		15EF1E7A226DA2E700D4DD6A /* CustomTextAttachment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextAttachment.swift; sourceTree = "<group>"; };
+		15EF1E7D226DA56E00D4DD6A /* arrow_up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow_up.png; sourceTree = "<group>"; };
+		15EF1E7F226DB5BE00D4DD6A /* SelectAccountCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectAccountCell.swift; sourceTree = "<group>"; };
+		15EF1E80226DB5BE00D4DD6A /* SelectAccountCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectAccountCell.xib; sourceTree = "<group>"; };
+		15EF1E83226DCF0F00D4DD6A /* plus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plus.png; sourceTree = "<group>"; };
+		15EF1E84226DCF1100D4DD6A /* transfer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = transfer.png; sourceTree = "<group>"; };
+		15EF1E85226DCF1300D4DD6A /* minus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = minus.png; sourceTree = "<group>"; };
 		843E38D7225E3E4A0044610A /* ChooseAccountTypePopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseAccountTypePopupView.swift; sourceTree = "<group>"; };
 		843E38DA225E43160044610A /* AccountTypeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTypeCell.swift; sourceTree = "<group>"; };
 		843E38DB225E43160044610A /* AccountTypeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountTypeCell.xib; sourceTree = "<group>"; };
@@ -334,6 +350,8 @@
 				152141FC225F4DCC00ACD6D3 /* WalletAccountCell.xib */,
 				84AD99D22264547D00BA8ECE /* ActionMenuCell.swift */,
 				84AD99D32264547D00BA8ECE /* ActionMenuCell.xib */,
+				15EF1E7F226DB5BE00D4DD6A /* SelectAccountCell.swift */,
+				15EF1E80226DB5BE00D4DD6A /* SelectAccountCell.xib */,
 			);
 			path = AppUI;
 			sourceTree = "<group>";
@@ -344,6 +362,7 @@
 				153A25D0225DAF5800BEBD39 /* StringsUtil.swift */,
 				15214201225F51A800ACD6D3 /* WalletAccountObj.swift */,
 				84C508CB226367CA002E592C /* ActionMenuObj.swift */,
+				15EF1E7A226DA2E700D4DD6A /* CustomTextAttachment.swift */,
 			);
 			path = AppObjects;
 			sourceTree = "<group>";
@@ -513,6 +532,11 @@
 				84F36343226C2C62005E48D9 /* checked.png */,
 				84F36345226C303E005E48D9 /* saving_account_bank.png */,
 				84F36347226C45DF005E48D9 /* sad_face.png */,
+				15EF1E78226DA25900D4DD6A /* arrow_down.png */,
+				15EF1E7D226DA56E00D4DD6A /* arrow_up.png */,
+				15EF1E85226DCF1300D4DD6A /* minus.png */,
+				15EF1E83226DCF0F00D4DD6A /* plus.png */,
+				15EF1E84226DCF1100D4DD6A /* transfer.png */,
 			);
 			path = images;
 			sourceTree = "<group>";
@@ -639,11 +663,13 @@
 				84AD99ED2264651400BA8ECE /* cable_tv.png in Resources */,
 				84AD9A1E2264754D00BA8ECE /* sports.png in Resources */,
 				84AD99DE2264613F00BA8ECE /* groceries.png in Resources */,
+				15EF1E87226DCF1300D4DD6A /* transfer.png in Resources */,
 				84AD9A232264754D00BA8ECE /* pharmacy.png in Resources */,
 				152141FE225F4DCC00ACD6D3 /* WalletAccountCell.xib in Resources */,
 				84AD99FB22646DBD00BA8ECE /* fuel.png in Resources */,
 				15ADD23D225B090C00A8F3CE /* Localizable.strings in Resources */,
 				1574B45F22608C8900904619 /* tabbar_add.png in Resources */,
+				15EF1E86226DCF1300D4DD6A /* plus.png in Resources */,
 				84AD99F02264651400BA8ECE /* hiring_maids.png in Resources */,
 				153A25BE225DA0E100BEBD39 /* tabbar_wallet.png in Resources */,
 				84AD9A0D2264720500BA8ECE /* travel.png in Resources */,
@@ -670,6 +696,7 @@
 				153A25D5225DD14500BEBD39 /* ReceiptAndExpenseCell.xib in Resources */,
 				84AD9A3C22647BB300BA8ECE /* education.png in Resources */,
 				84AD9A3422647BB300BA8ECE /* books.png in Resources */,
+				15EF1E79226DA25B00D4DD6A /* arrow_down.png in Resources */,
 				84AD99EF2264651400BA8ECE /* electricity.png in Resources */,
 				843E38DD225E43160044610A /* AccountTypeCell.xib in Resources */,
 				84AD9A3522647BB300BA8ECE /* baby_supplies.png in Resources */,
@@ -686,10 +713,13 @@
 				15886987225C3D79000FC0E5 /* pass_hide.png in Resources */,
 				84AD9A4122647E0D00BA8ECE /* home_phone.png in Resources */,
 				84AD99FA22646DBD00BA8ECE /* parking.png in Resources */,
+				15EF1E7E226DA56F00D4DD6A /* arrow_up.png in Resources */,
 				153A25F5225E077000BEBD39 /* ic_wallet_gray.png in Resources */,
 				84AD9A1F2264754D00BA8ECE /* gifts_and_donations.png in Resources */,
 				153A25C5225DA2AE00BEBD39 /* tabbar_more@2x.png in Resources */,
 				15ADD21F225AFD4300A8F3CE /* Main.storyboard in Resources */,
+				15EF1E82226DB5BE00D4DD6A /* SelectAccountCell.xib in Resources */,
+				15EF1E88226DCF1300D4DD6A /* minus.png in Resources */,
 				153A25EE225DFB0000BEBD39 /* arrow_gray.png in Resources */,
 				84AD9A3F22647DBD00BA8ECE /* repair_of_buildings.png in Resources */,
 				1574B46522608D1E00904619 /* tabbar_saving.png in Resources */,
@@ -783,7 +813,9 @@
 				1574B45B22608B6400904619 /* ActionViewController.swift in Sources */,
 				84C508CC226367CA002E592C /* ActionMenuObj.swift in Sources */,
 				153A25A6225D961400BEBD39 /* AccountViewController.swift in Sources */,
+				15EF1E81226DB5BE00D4DD6A /* SelectAccountCell.swift in Sources */,
 				153A25EB225DF94200BEBD39 /* AmoutDetailDescCell.swift in Sources */,
+				15EF1E7B226DA2E700D4DD6A /* CustomTextAttachment.swift in Sources */,
 				153A25D8225DD6D900BEBD39 /* ActionCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

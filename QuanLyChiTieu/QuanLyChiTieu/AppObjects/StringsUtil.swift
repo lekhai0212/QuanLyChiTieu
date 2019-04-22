@@ -27,4 +27,20 @@ class StringsUtil: NSObject {
         }
         return ""
     }
+    
+    class func createAttributedText(text:String, image:UIImage, size:CGFloat) -> NSAttributedString {
+        
+        let attachment:CustomTextAttachment = CustomTextAttachment()
+        attachment.image = image
+        attachment.setImageHeight(height: size)
+        let attachmentAttr:NSAttributedString = NSAttributedString(attachment: attachment)
+        
+        let contentString:NSMutableAttributedString = NSMutableAttributedString(string: text)
+        contentString.addAttribute(.font, value: UIFont.systemFont(ofSize: 16.0), range: NSMakeRange(0, text.count))
+        contentString.addAttribute(.foregroundColor, value: UIColor.white, range: NSMakeRange(0, text.count))
+        
+        contentString.append(attachmentAttr)
+        
+        return contentString;
+    }
 }

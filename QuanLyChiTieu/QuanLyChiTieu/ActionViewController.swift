@@ -15,8 +15,10 @@ class ActionViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var curAction:ActionMenuObj!
     var walletAccModel:WalletAccountModel!
     var selectedAcc:WalletAccountObj!
-    
     var listAccount:Array<Any>!
+    var tbTypeAction:UITableView!
+    var typeAction:Int!
+    var lbTitle:UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +30,57 @@ class ActionViewController: UIViewController, UITableViewDelegate, UITableViewDa
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
         
         self.setupUIForView()
+        
+        let attrStr:NSAttributedString = StringsUtil.createAttributedText(text: "Chi tiền  ", image: UIImage(named: "arrow_down")!, size: 14.0)
+        
+        lbTitle = UILabel(frame: CGRect(x: 40, y: 0, width: UIScreen.main.bounds.size.width-80, height: (self.navigationController?.navigationBar.frame.size.height)!))
+        lbTitle.textAlignment = .center
+        lbTitle.backgroundColor = UIColor.clear
+        lbTitle.attributedText = attrStr
+        lbTitle.isUserInteractionEnabled = true
+        self.navigationController?.navigationBar.topItem?.titleView = lbTitle
+        
+        let tapOnTitle:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(whenTapOnTitle))
+        lbTitle.addGestureRecognizer(tapOnTitle)
+        
+        //  create table
+        typeAction = 0
+        
+        tbTypeAction = UITableView()
+        tbTypeAction.sectionHeaderHeight = UITableViewAutomaticDimension
+        tbTypeAction.sectionFooterHeight = UITableViewAutomaticDimension
+        tbTypeAction.separatorStyle = .none
+        tbTypeAction.isScrollEnabled = false
+        
+        let nibCell = UINib(nibName: "SelectAccountCell", bundle: nil)
+        tbTypeAction.register(nibCell, forCellReuseIdentifier: "SelectAccountCell")
+        tbTypeAction.delegate = self
+        tbTypeAction.dataSource = self
+        self.view.addSubview(tbTypeAction)
+        tbTypeAction.mas_makeConstraints { (make:MASConstraintMaker?) in
+            make?.top.left().right().equalTo()(self.view)
+            make?.height.mas_equalTo()(0)
+        }
+    }
+    
+    @objc func whenTapOnTitle() {
+        if tbTypeAction.frame.size.height == 0 {
+            
+            let attrStr:NSAttributedString = StringsUtil.createAttributedText(text: "Chi tiền  ", image: UIImage(named: "arrow_down")!, size: 14.0)
+            lbTitle.attributedText
+            tbTypeAction.mas_remakeConstraints { (make:MASConstraintMaker?) in
+                make?.top.left().right().equalTo()(self.view)
+                make?.height.mas_equalTo()(50*3)
+            }
+        }else{
+            tbTypeAction.mas_remakeConstraints { (make:MASConstraintMaker?) in
+                make?.top.left().right().equalTo()(self.view)
+                make?.height.mas_equalTo()(0)
+            }
+        }
+        UIView.animate(withDuration: 0.2) {
+            self.view.layoutIfNeeded()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -54,8 +107,8 @@ class ActionViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let nibBalance = UINib(nibName: "BalanceCell", bundle: nil)
         let nibDetail = UINib(nibName: "AmountDetailCell", bundle: nil)
         
-        tbContent.sectionHeaderHeight = UITableViewAutomaticDimension;
-        tbContent.sectionFooterHeight = UITableViewAutomaticDimension;
+        tbContent.sectionHeaderHeight = UITableViewAutomaticDimension
+        tbContent.sectionFooterHeight = UITableViewAutomaticDimension
         tbContent.register(nibBalance, forCellReuseIdentifier: "BalanceCell")
         tbContent.register(nibDetail, forCellReuseIdentifier: "AmountDetailCell")
         tbContent.delegate = self
@@ -67,35 +120,67 @@ class ActionViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     //  MARK: Tableview
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        if tableView == tbTypeAction {
+            return 1
+        }else {
+            return 2
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
-            return 1
+        if tableView == tbTypeAction {
+            return 3
         }else{
-            return 4
+            if section == 0 {
+                return 1
+            }else{
+                return 4
+            }
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.section == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "BalanceCell", for: indexPath) as! BalanceCell
+        if tableView == tbTypeAction {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "SelectAccountCell", for: indexPath) as! SelectAccountCell
             cell.selectionStyle = .none
-            cell.lbAmount.text = "Số tiền"
+            cell.imgSelected.isHidden = true
+            
+            if indexPath.row == 0 {
+                cell.lbName.text = "Chi tiền"
+                cell.imgType.image = UIImage(named: "minus")
+                
+            }else if indexPath.row == 1 {
+                cell.lbName.text = "Thu tiền"
+                cell.imgType.image = UIImage(named: "plus")
+                
+            }else{
+                cell.lbName.text = "Chuyển khoản"
+                cell.imgType.image = UIImage(named: "transfer")
+                
+            }
+            if typeAction == indexPath.row {
+                cell.imgSelected.isHidden = false
+            }
             
             return cell
         }else{
-            let cell = tableView.dequeueReusableCell(withIdentifier: "AmountDetailCell", for: indexPath) as! AmountDetailCell
-            cell.selectionStyle = .none
-            if indexPath.row == 0 {
-                cell.setupCellWithLargeIcon(large: true)
+            if indexPath.section == 0 {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "BalanceCell", for: indexPath) as! BalanceCell
+                cell.selectionStyle = .none
+                cell.lbAmount.text = "Số tiền"
+                
+                return cell
             }else{
-                cell.setupCellWithLargeIcon(large: false)
-            }
-            cell.tfContent.isEnabled = false
-            
-            switch indexPath.row {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "AmountDetailCell", for: indexPath) as! AmountDetailCell
+                cell.selectionStyle = .none
+                if indexPath.row == 0 {
+                    cell.setupCellWithLargeIcon(large: true)
+                }else{
+                    cell.setupCellWithLargeIcon(large: false)
+                }
+                cell.tfContent.isEnabled = false
+                
+                switch indexPath.row {
                 case 0:do {
                     if curAction != nil {
                         cell.tfContent.text = curAction.menuName
@@ -107,22 +192,22 @@ class ActionViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     
                     cell.imgArrow.isHidden = false
                     break
-                }
-                
+                    }
+                    
                 case 1: do {
                     cell.tfContent.placeholder = "Mô tả"
                     cell.imgType.image = UIImage(named: "three_line_blue")
                     cell.imgArrow.isHidden = true
                     cell.tfContent.isEnabled = true
                     break
-                }
-                
+                    }
+                    
                 case 2: do {
                     cell.tfContent.text = "Thời gian"
                     cell.imgType.image = UIImage(named: "calendar")
                     cell.imgArrow.isHidden = false
                     break
-                }
+                    }
                 case 3: do {
                     if selectedAcc == nil {
                         cell.tfContent.text = "Chưa có tài khoản"
@@ -142,47 +227,63 @@ class ActionViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     }
                     
                     break
-                }
+                    }
                 default:do {
                     break
+                    }
                 }
+                return cell
             }
-            return cell
         }
+        
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.section == 1 && indexPath.row == 0 {
+        if tableView == tbTypeAction {
+            typeAction = indexPath.row
+            sssss
             
-            let categoryVC = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "SelectCategoryViewController") as! SelectCategoryViewController
-            categoryVC.delegate = self
-            categoryVC.hidesBottomBarWhenPushed = true
-            if curAction != nil {
-                categoryVC.selectedMenu = curAction
+        }else{
+            if indexPath.section == 1 && indexPath.row == 0 {
+                
+                let categoryVC = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "SelectCategoryViewController") as! SelectCategoryViewController
+                categoryVC.delegate = self
+                categoryVC.hidesBottomBarWhenPushed = true
+                if curAction != nil {
+                    categoryVC.selectedMenu = curAction
+                }
+                self.navigationController?.pushViewController(categoryVC, animated: true)
+            }else if indexPath.section == 1 && indexPath.row == 3 {
+                let selectAccVC = UIStoryboard.init(name: "Main", bundle:
+                    Bundle.main).instantiateViewController(withIdentifier: "SelectAccountViewController") as! SelectAccountViewController
+                selectAccVC.delegate = self
+                selectAccVC.hidesBottomBarWhenPushed = true
+                if selectedAcc != nil {
+                    selectAccVC.selectedAcc = selectedAcc
+                }
+                self.navigationController?.pushViewController(selectAccVC, animated: true)
             }
-            self.navigationController?.pushViewController(categoryVC, animated: true)
-        }else if indexPath.section == 1 && indexPath.row == 3 {
-            let selectAccVC = UIStoryboard.init(name: "Main", bundle:
-                Bundle.main).instantiateViewController(withIdentifier: "SelectAccountViewController") as! SelectAccountViewController
-            selectAccVC.delegate = self
-            selectAccVC.hidesBottomBarWhenPushed = true
-            if selectedAcc != nil {
-                selectAccVC.selectedAcc = selectedAcc
-            }
-            self.navigationController?.pushViewController(selectAccVC, animated: true)
         }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.section == 0 {
-            return 95.0
+        if tableView == tbTypeAction {
+            return 50.0
         }else{
-            return 60.0
+            if indexPath.section == 0 {
+                return 95.0
+            }else{
+                return 60.0
+            }
         }
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 10.0
+        if tableView == tbTypeAction {
+            return 0.1
+        }else{
+            return 10.0
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
@@ -197,5 +298,9 @@ class ActionViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func selectedAccount(account: WalletAccountObj) {
         selectedAcc = account
         tbContent.reloadData()
+    }
+    
+    func getContentWithTypeAction(actionType:Int) -> String {
+        
     }
 }

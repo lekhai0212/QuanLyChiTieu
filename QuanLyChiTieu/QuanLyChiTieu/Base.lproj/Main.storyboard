@@ -172,6 +172,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <nil key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pos-bW-djZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -279,6 +280,34 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nbm-Bb-gKu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2089" y="2142"/>
+        </scene>
+        <!--Select Account View Controller-->
+        <scene sceneID="cy7-Hv-fE7">
+            <objects>
+                <viewController storyboardIdentifier="SelectAccountViewController" id="YPT-eK-3i1" customClass="SelectAccountViewController" customModule="QuanLyChiTieu" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="wXb-P0-0kc"/>
+                        <viewControllerLayoutGuide type="bottom" id="gpG-8e-IPp"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ZfV-sZ-7Hv">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Mth-nC-Jdu">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <connections>
+                        <outlet property="tbAccount" destination="Mth-nC-Jdu" id="6mr-sl-Iaz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bkU-ES-scr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2085.5999999999999" y="2873.6131934032987"/>
         </scene>
         <!--Select Category View Controller-->
         <scene sceneID="5v8-xQ-dYg">

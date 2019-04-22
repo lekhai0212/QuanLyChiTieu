@@ -9,9 +9,14 @@
 import UIKit
 import Masonry
 
-class ActionViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ActionViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, SelectCategoryViewControllerDelegate, SelectAccountViewControllerDelegate {
 
     @IBOutlet weak var tbContent: UITableView!
+    var curAction:ActionMenuObj!
+    var walletAccModel:WalletAccountModel!
+    var selectedAcc:WalletAccountObj!
+    
+    var listAccount:Array<Any>!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +29,16 @@ class ActionViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         self.setupUIForView()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if walletAccModel == nil {
+            walletAccModel = WalletAccountModel()
+        }
+        listAccount = walletAccModel.getWalletAccountList()
+        if selectedAcc == nil && listAccount.count > 0 {
+            selectedAcc = listAccount.first as? WalletAccountObj
+        }
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -32,11 +47,9 @@ class ActionViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
 
     func setupUIForView() {
+        self.edgesForExtendedLayout = []
         self.automaticallyAdjustsScrollViewInsets = false
         self.view.backgroundColor = UIColor(red: 235/255.0, green: 235/255.0, blue: 235/255.0, alpha: 1.0)
-        
-        let originY:CGFloat = UIApplication.shared.statusBarFrame.size.height + (self.navigationController?.navigationBar.frame.size.height)!
-        let tabHeight:CGFloat = (self.tabBarController?.tabBar.frame.size.height)!
         
         let nibBalance = UINib(nibName: "BalanceCell", bundle: nil)
         let nibDetail = UINib(nibName: "AmountDetailCell", bundle: nil)
@@ -48,9 +61,7 @@ class ActionViewController: UIViewController, UITableViewDelegate, UITableViewDa
         tbContent.delegate = self
         tbContent.dataSource = self
         tbContent.mas_makeConstraints { (make:MASConstraintMaker?) in
-            make?.top.equalTo()(self.view)?.offset()(originY)
-            make?.left.right().bottom().offset()(tabHeight)
-            make?.left.right().equalTo()(self.view)
+            make?.top.left()?.bottom().right()?.equalTo()(self.view)
         }
     }
     
@@ -86,16 +97,23 @@ class ActionViewController: UIViewController, UITableViewDelegate, UITableViewDa
             
             switch indexPath.row {
                 case 0:do {
-                    cell.tfContent.text = "Chọn hạng mục"
-                    cell.imgType.image = UIImage(named: "question")
+                    if curAction != nil {
+                        cell.tfContent.text = curAction.menuName
+                        cell.imgType.image = UIImage(named: curAction.menuCode)
+                    }else{
+                        cell.tfContent.text = "Chọn hạng mục"
+                        cell.imgType.image = UIImage(named: "question")
+                    }
+                    
                     cell.imgArrow.isHidden = false
                     break
                 }
                 
                 case 1: do {
-                    cell.tfContent.text = "Mô tả"
+                    cell.tfContent.placeholder = "Mô tả"
                     cell.imgType.image = UIImage(named: "three_line_blue")
                     cell.imgArrow.isHidden = true
+                    cell.tfContent.isEnabled = true
                     break
                 }
                 
@@ -106,9 +124,23 @@ class ActionViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     break
                 }
                 case 3: do {
-                    cell.tfContent.text = "Thời gian"
-                    cell.imgType.image = UIImage(named: "ic_bank")
-                    cell.imgArrow.isHidden = false
+                    if selectedAcc == nil {
+                        cell.tfContent.text = "Chưa có tài khoản"
+                        cell.imgType.image = UIImage(named: "sad_face")
+                        cell.imgArrow.isHidden = false
+                    }else{
+                        cell.tfContent.text = selectedAcc.accountName
+                        if selectedAcc.accountType == 1 {
+                            cell.imgType.image = UIImage(named: "ic_money")
+                            
+                        }else if selectedAcc.accountType == 2 {
+                            cell.imgType.image = UIImage(named: "ic_bank")
+                        }else{
+                            cell.imgType.image = UIImage(named: "saving_account_bank")
+                        }
+                        cell.imgArrow.isHidden = false
+                    }
+                    
                     break
                 }
                 default:do {
@@ -123,9 +155,21 @@ class ActionViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if indexPath.section == 1 && indexPath.row == 0 {
             
             let categoryVC = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "SelectCategoryViewController") as! SelectCategoryViewController
+            categoryVC.delegate = self
             categoryVC.hidesBottomBarWhenPushed = true
-            
+            if curAction != nil {
+                categoryVC.selectedMenu = curAction
+            }
             self.navigationController?.pushViewController(categoryVC, animated: true)
+        }else if indexPath.section == 1 && indexPath.row == 3 {
+            let selectAccVC = UIStoryboard.init(name: "Main", bundle:
+                Bundle.main).instantiateViewController(withIdentifier: "SelectAccountViewController") as! SelectAccountViewController
+            selectAccVC.delegate = self
+            selectAccVC.hidesBottomBarWhenPushed = true
+            if selectedAcc != nil {
+                selectAccVC.selectedAcc = selectedAcc
+            }
+            self.navigationController?.pushViewController(selectAccVC, animated: true)
         }
     }
     
@@ -143,5 +187,15 @@ class ActionViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 0.1
+    }
+    
+    func selectMenuAction(action: ActionMenuObj) {
+        curAction = action
+        tbContent.reloadData()
+    }
+    
+    func selectedAccount(account: WalletAccountObj) {
+        selectedAcc = account
+        tbContent.reloadData()
     }
 }

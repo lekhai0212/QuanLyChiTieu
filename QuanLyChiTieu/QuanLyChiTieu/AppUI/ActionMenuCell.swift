@@ -14,6 +14,7 @@ class ActionMenuCell: UITableViewCell {
     @IBOutlet weak var imgType: UIImageView!
     @IBOutlet weak var lbName: UILabel!
     @IBOutlet weak var lbSepa: UILabel!
+    @IBOutlet weak var imgChecked: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -41,10 +42,16 @@ class ActionMenuCell: UITableViewCell {
             make?.width.height()?.mas_equalTo()(38.0)
         }
         
+        imgChecked.mas_makeConstraints { (make:MASConstraintMaker?) in
+            make?.centerY.equalTo()(self.mas_centerY)
+            make?.right.equalTo()(self)?.offset()(-5.0)
+            make?.width.height()?.mas_equalTo()(17.0)
+        }
+        
         lbName.mas_makeConstraints { (make:MASConstraintMaker?) in
             make?.top.bottom().equalTo()(self)
             make?.left.equalTo()(imgType.mas_right)?.offset()(5.0)
-            make?.right.equalTo()(self)?.offset()(-5.0)
+            make?.right.equalTo()(imgChecked.mas_left)?.offset()(-5.0)
         }
     }
     
@@ -62,10 +69,16 @@ class ActionMenuCell: UITableViewCell {
                 make?.width.height()?.mas_equalTo()(30.0)
             }
             
+            imgChecked.mas_remakeConstraints { (make:MASConstraintMaker?) in
+                make?.centerY.equalTo()(self.mas_centerY)
+                make?.right.equalTo()(self)?.offset()(-5.0)
+                make?.width.height()?.mas_equalTo()(17.0)
+            }
+            
             lbName.mas_remakeConstraints { (make:MASConstraintMaker?) in
                 make?.top.bottom().equalTo()(self)
                 make?.left.equalTo()(imgType.mas_right)?.offset()(5.0)
-                make?.right.equalTo()(self)?.offset()(-5.0)
+                make?.right.equalTo()(imgChecked.mas_left)?.offset()(-5.0)
             }
         }else{
             imgArrow.mas_remakeConstraints { (make:MASConstraintMaker?) in
@@ -80,10 +93,16 @@ class ActionMenuCell: UITableViewCell {
                 make?.width.height()?.mas_equalTo()(38.0)
             }
             
+            imgChecked.mas_remakeConstraints { (make:MASConstraintMaker?) in
+                make?.centerY.equalTo()(self.mas_centerY)
+                make?.right.equalTo()(self)?.offset()(-5.0)
+                make?.width.height()?.mas_equalTo()(17.0)
+            }
+            
             lbName.mas_remakeConstraints { (make:MASConstraintMaker?) in
                 make?.top.bottom().equalTo()(self)
                 make?.left.equalTo()(imgType.mas_right)?.offset()(5.0)
-                make?.right.equalTo()(self)?.offset()(-5.0)
+                make?.right.equalTo()(imgChecked.mas_left)?.offset()(-5.0)
             }
         }
     }
@@ -92,6 +111,14 @@ class ActionMenuCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    override func setHighlighted(_ highlighted: Bool, animated: Bool) {
+        if highlighted {
+            self.backgroundColor = UIColor(red: 245/255.0, green: 245/255.0, blue: 245/255.0, alpha: 1.0)
+        }else{
+            self.backgroundColor = UIColor.white
+        }
     }
     
 }

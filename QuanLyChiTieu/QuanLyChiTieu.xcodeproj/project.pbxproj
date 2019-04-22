@@ -141,6 +141,10 @@
 		84BD2DB2225EB67F00F72238 /* WalletAccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BD2DB1225EB67F00F72238 /* WalletAccountModel.swift */; };
 		84C2214A225D691600C4ECFE /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C22149225D691600C4ECFE /* HomeViewController.swift */; };
 		84C508CC226367CA002E592C /* ActionMenuObj.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C508CB226367CA002E592C /* ActionMenuObj.swift */; };
+		84F36344226C2C63005E48D9 /* checked.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F36343226C2C62005E48D9 /* checked.png */; };
+		84F36346226C303F005E48D9 /* saving_account_bank.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F36345226C303E005E48D9 /* saving_account_bank.png */; };
+		84F36348226C45E0005E48D9 /* sad_face.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F36347226C45DF005E48D9 /* sad_face.png */; };
+		84F3634A226C4794005E48D9 /* SelectAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F36349226C4794005E48D9 /* SelectAccountViewController.swift */; };
 		C6C1B1823237D2A0C8D1F2CA /* Pods_QuanLyChiTieu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E60493C999FD289F2985B24 /* Pods_QuanLyChiTieu.framework */; };
 /* End PBXBuildFile section */
 
@@ -287,6 +291,10 @@
 		84C22145225D688D00C4ECFE /* QuanLyChiTieu-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "QuanLyChiTieu-Bridging-Header.h"; sourceTree = "<group>"; };
 		84C22149225D691600C4ECFE /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		84C508CB226367CA002E592C /* ActionMenuObj.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionMenuObj.swift; sourceTree = "<group>"; };
+		84F36343226C2C62005E48D9 /* checked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checked.png; sourceTree = "<group>"; };
+		84F36345226C303E005E48D9 /* saving_account_bank.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = saving_account_bank.png; sourceTree = "<group>"; };
+		84F36347226C45DF005E48D9 /* sad_face.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sad_face.png; sourceTree = "<group>"; };
+		84F36349226C4794005E48D9 /* SelectAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectAccountViewController.swift; sourceTree = "<group>"; };
 		B21FD4686CE0206AC2F142F4 /* Pods-QuanLyChiTieu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuanLyChiTieu.debug.xcconfig"; path = "Pods/Target Support Files/Pods-QuanLyChiTieu/Pods-QuanLyChiTieu.debug.xcconfig"; sourceTree = "<group>"; };
 		D3555135EAD15A6DDC75997E /* Pods-QuanLyChiTieu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuanLyChiTieu.release.xcconfig"; path = "Pods/Target Support Files/Pods-QuanLyChiTieu/Pods-QuanLyChiTieu.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -381,6 +389,7 @@
 				84C22149225D691600C4ECFE /* HomeViewController.swift */,
 				153A25A3225D959A00BEBD39 /* OverviewViewController.swift */,
 				153A25A5225D961400BEBD39 /* AccountViewController.swift */,
+				84F36349226C4794005E48D9 /* SelectAccountViewController.swift */,
 				153A25DA225DE47000BEBD39 /* CreateAccountViewController.swift */,
 				1574B45A22608B6400904619 /* ActionViewController.swift */,
 				1574B45822608AEA00904619 /* SavingAccountViewController.swift */,
@@ -501,6 +510,9 @@
 				84AD9A3E22647DBC00BA8ECE /* repair_of_buildings.png */,
 				84AD9A4022647E0D00BA8ECE /* home_phone.png */,
 				84AD9A42226485E900BA8ECE /* service_and_parts.png */,
+				84F36343226C2C62005E48D9 /* checked.png */,
+				84F36345226C303E005E48D9 /* saving_account_bank.png */,
+				84F36347226C45DF005E48D9 /* sad_face.png */,
 			);
 			path = images;
 			sourceTree = "<group>";
@@ -618,6 +630,7 @@
 				84AD99D52264547D00BA8ECE /* ActionMenuCell.xib in Resources */,
 				1574B46622608D1E00904619 /* tabbar_saving@3x.png in Resources */,
 				84AD9A3622647BB300BA8ECE /* kids.png in Resources */,
+				84F36344226C2C63005E48D9 /* checked.png in Resources */,
 				153A25B7225D9F9E00BEBD39 /* tabbar_overview@2x.png in Resources */,
 				843E38DF225E43D80044610A /* choosed.png in Resources */,
 				84AD9A3822647BB300BA8ECE /* toys.png in Resources */,
@@ -651,6 +664,7 @@
 				153A25CC225DAE4600BEBD39 /* WalletInfoCell.xib in Resources */,
 				1574B46D2260970F00904619 /* tabbar_plus.png in Resources */,
 				84AD9A0B2264720500BA8ECE /* entertainment.png in Resources */,
+				84F36346226C303F005E48D9 /* saving_account_bank.png in Resources */,
 				15ADD249225B3AC900A8F3CE /* logo.png in Resources */,
 				84AD9A202264754D00BA8ECE /* gifts.png in Resources */,
 				153A25D5225DD14500BEBD39 /* ReceiptAndExpenseCell.xib in Resources */,
@@ -668,6 +682,7 @@
 				84AD9A3B22647BB300BA8ECE /* furnishing.png in Resources */,
 				153A25BD225DA0E100BEBD39 /* tabbar_wallet@2x.png in Resources */,
 				84AD9A3222647BB300BA8ECE /* personal.png in Resources */,
+				84F36348226C45E0005E48D9 /* sad_face.png in Resources */,
 				15886987225C3D79000FC0E5 /* pass_hide.png in Resources */,
 				84AD9A4122647E0D00BA8ECE /* home_phone.png in Resources */,
 				84AD99FA22646DBD00BA8ECE /* parking.png in Resources */,
@@ -746,6 +761,7 @@
 				152141FD225F4DCC00ACD6D3 /* WalletAccountCell.swift in Sources */,
 				153A25DB225DE47000BEBD39 /* CreateAccountViewController.swift in Sources */,
 				15ADD22F225AFFA700A8F3CE /* SignInViewController.swift in Sources */,
+				84F3634A226C4794005E48D9 /* SelectAccountViewController.swift in Sources */,
 				153A25E2225DF39000BEBD39 /* BalanceCell.swift in Sources */,
 				15214202225F51A800ACD6D3 /* WalletAccountObj.swift in Sources */,
 				1588698C225C5098000FC0E5 /* AccountModel.swift in Sources */,

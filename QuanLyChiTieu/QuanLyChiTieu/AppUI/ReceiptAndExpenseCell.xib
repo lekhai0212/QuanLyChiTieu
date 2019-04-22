@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -101,9 +100,15 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Chưa có dữ liệu" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tvh-77-dBG">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="143.5"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
             </tableViewCellContentView>
-            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="lbAccumulate" destination="fxu-uZ-ahv" id="R9I-jM-evQ"/>
                 <outlet property="lbExpense" destination="qNA-nY-edR" id="415-Gp-YsA"/>
@@ -114,9 +119,10 @@
                 <outlet property="lbIncome" destination="bv0-Yr-uia" id="hoc-ru-jDe"/>
                 <outlet property="lbIncomeColumn" destination="7TP-CO-YfR" id="BuP-Jl-csc"/>
                 <outlet property="lbIncomeMoney" destination="vfL-w5-ZLL" id="Jod-AF-uQ9"/>
+                <outlet property="lbNoData" destination="tvh-77-dBG" id="O6l-8a-QLN"/>
                 <outlet property="lbSepa" destination="Jdq-hf-r0p" id="rVE-An-I8F"/>
             </connections>
-            <point key="canvasLocation" x="-203" y="23"/>
+            <point key="canvasLocation" x="-93" y="40"/>
         </tableViewCell>
     </objects>
 </document>

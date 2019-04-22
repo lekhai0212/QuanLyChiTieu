@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -50,20 +50,26 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="checked.png" translatesAutoresizingMaskIntoConstraints="NO" id="gd8-4X-DW9">
+                        <rect key="frame" x="261" y="16" width="28" height="28"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    </imageView>
                 </subviews>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="icMore" destination="un6-I6-7aF" id="q24-mT-Y04"/>
+                <outlet property="imgChecked" destination="gd8-4X-DW9" id="iO9-g5-woQ"/>
                 <outlet property="imgType" destination="wpq-uQ-DvO" id="D7J-vc-lAY"/>
                 <outlet property="lbMoney" destination="1sG-90-dCd" id="cak-5F-0Vg"/>
                 <outlet property="lbName" destination="9M8-Ed-feo" id="Hzl-h3-YHh"/>
                 <outlet property="lbSepa" destination="tAp-7h-xC2" id="xM3-Pv-GmM"/>
             </connections>
-            <point key="canvasLocation" x="-282" y="-83"/>
+            <point key="canvasLocation" x="73.599999999999994" y="-93.553223388305852"/>
         </tableViewCell>
     </objects>
     <resources>
+        <image name="checked.png" width="128" height="128"/>
         <image name="more_vertical.png" width="200" height="200"/>
     </resources>
 </document>

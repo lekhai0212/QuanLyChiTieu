@@ -46,11 +46,9 @@ class CreateAccountViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     func setupUIForView() {
+        self.edgesForExtendedLayout = []
         self.automaticallyAdjustsScrollViewInsets = false
         self.view.backgroundColor = UIColor(red: 235/255.0, green: 235/255.0, blue: 235/255.0, alpha: 1.0)
-        
-        let originY:CGFloat = UIApplication.shared.statusBarFrame.size.height + (self.navigationController?.navigationBar.frame.size.height)!
-        let tabHeight:CGFloat = (self.tabBarController?.tabBar.frame.size.height)!
         
         tbContent.delegate = self
         tbContent.dataSource = self
@@ -64,9 +62,7 @@ class CreateAccountViewController: UIViewController, UITableViewDelegate, UITabl
         tbContent.register(AmountDetailCellNib, forCellReuseIdentifier: "AmountDetailCell")
         
         tbContent.mas_makeConstraints { (make:MASConstraintMaker?) in
-            make?.top.equalTo()(self.view)?.offset()(originY)
-            make?.left.right().equalTo()(self.view)
-            make?.bottom.equalTo()(self.view)?.offset()(-tabHeight)
+            make?.top.left()?.bottom()?.right()?.equalTo()(self.view)
         }
         
         let footerView:UIView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 75.0))
@@ -180,7 +176,7 @@ class CreateAccountViewController: UIViewController, UITableViewDelegate, UITabl
                 cell.imgType.image = UIImage(named: "ic_wallet_gray")
                 cell.tfContent.placeholder = NSLocalizedString("Account name", comment: "")
                 cell.imgArrow.isHidden = true
-                
+                cell.lbSepa.isHidden = false
             }else if indexPath.row == 1 {
                 cell.tfContent.isEnabled = false
                 if accountType == 1 {
@@ -191,18 +187,19 @@ class CreateAccountViewController: UIViewController, UITableViewDelegate, UITabl
                     cell.tfContent.text = NSLocalizedString("Bank Account", comment: "")
                 }
                 cell.imgArrow.isHidden = false
-                
+                cell.lbSepa.isHidden = false
             }else if indexPath.row == 2 {
                 cell.tfContent.isEnabled = false
                 
                 cell.imgType.image = UIImage(named: "ic_dollar")
                 cell.tfContent.text = "VND"
                 cell.imgArrow.isHidden = false
-                
+                cell.lbSepa.isHidden = false
             }else{
                 cell.imgType.image = UIImage(named: "description")
                 cell.tfContent.placeholder = NSLocalizedString("Description", comment: "")
                 cell.imgArrow.isHidden = true
+                cell.lbSepa.isHidden = true
             }
             return cell
         }
@@ -211,7 +208,7 @@ class CreateAccountViewController: UIViewController, UITableViewDelegate, UITabl
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 1 && indexPath.row == 1 {
             let popup:ChooseAccountTypePopupView = ChooseAccountTypePopupView()
-            popup.setupUIWithFrame(frame: CGRect(x: (UIScreen.main.bounds.size.width-280)/2, y: (UIScreen.main.bounds.size.height-150)/2, width: 280, height: 150))
+            popup.setupUIWithFrame(frame: CGRect(x: (UIScreen.main.bounds.size.width-280)/2, y: (UIScreen.main.bounds.size.height-200)/2, width: 280, height: 200))
             popup.curType = accountType
             popup.delegate = self
             popup.showInView(aView: self.view, animated: true)
@@ -242,9 +239,12 @@ class CreateAccountViewController: UIViewController, UITableViewDelegate, UITabl
         if accountType == 1 {
             curCell.imgType.image = UIImage(named: "ic_money")
             curCell.tfContent.text = NSLocalizedString("Cash", comment: "")
-        }else{
+        }else if accountType == 2 {
             curCell.imgType.image = UIImage(named: "ic_bank")
             curCell.tfContent.text = NSLocalizedString("Bank Account", comment: "")
+        }else{
+            curCell.imgType.image = UIImage(named: "saving_account_bank")
+            curCell.tfContent.text = NSLocalizedString("Saving account", comment: "")
         }
     }
     

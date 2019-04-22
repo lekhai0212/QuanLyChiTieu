@@ -91,4 +91,15 @@ class WalletAccountModel: NSObject {
         }
     }
     
+    func getTotalBalance() -> String {
+        var totalBalance:Int = 0
+        
+        let listAccount = self.getWalletAccountList()
+        for item in listAccount {
+            let object:WalletAccountObj = item as! WalletAccountObj
+            totalBalance = totalBalance + Int(object.initialBalance)!
+        }
+        return String(totalBalance)
+    }
+    
 }

@@ -9,6 +9,10 @@
 import UIKit
 import Masonry
 
+protocol SelectCategoryViewControllerDelegate {
+    func selectMenuAction(action:ActionMenuObj)
+}
+
 class SelectCategoryViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var viewMenu: UIView!
@@ -21,7 +25,8 @@ class SelectCategoryViewController: UIViewController, UITableViewDelegate, UITab
     @IBOutlet weak var tbIncome: UITableView!
     @IBOutlet weak var tbDeptLoan: UITableView!
     @IBOutlet weak var tfSearch: UITextField!
-    
+    var delegate:SelectCategoryViewControllerDelegate!
+    var selectedMenu:ActionMenuObj!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -172,6 +177,7 @@ class SelectCategoryViewController: UIViewController, UITableViewDelegate, UITab
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ActionMenuCell", for: indexPath) as! ActionMenuCell
+        cell.selectionStyle = .none
         cell.setFrameForParent(isParent: false)
         
         let parent = self.getMenuObjetAtSection(section: indexPath.section)
@@ -179,7 +185,20 @@ class SelectCategoryViewController: UIViewController, UITableViewDelegate, UITab
         
         cell.lbName.text = curMenu.menuName
         cell.imgType.image = UIImage(named: curMenu.menuCode)
+        
+        cell.imgChecked.isHidden = true
+        if selectedMenu != nil && selectedMenu.menuId == curMenu.menuId {
+            cell.imgChecked.isHidden = false
+        }
+        
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let parent = self.getMenuObjetAtSection(section: indexPath.section)
+        let curMenu = self.getMenuObjetAtRow(parentId: parent.menuId, row: indexPath.row)
+        delegate.selectMenuAction(action: curMenu)
+        self.navigationController?.popViewController(animated: true)
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {

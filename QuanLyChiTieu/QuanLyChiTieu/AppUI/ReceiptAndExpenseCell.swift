@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Masonry
 
 class ReceiptAndExpenseCell: UITableViewCell {
 
@@ -20,6 +21,7 @@ class ReceiptAndExpenseCell: UITableViewCell {
     @IBOutlet weak var lbExpenseMoney: UILabel!
     @IBOutlet weak var lbSepa: UILabel!
     @IBOutlet weak var lbAccumulate: UILabel!
+    @IBOutlet weak var lbNoData: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -27,6 +29,13 @@ class ReceiptAndExpenseCell: UITableViewCell {
         lbIncome.text = NSLocalizedString("Income", comment: "")
         lbExpense.text = NSLocalizedString("Expense", comment: "")
         lbAccumulate.text = NSLocalizedString("Accumulate", comment: "")
+        
+        lbNoData.font = UIFont.systemFont(ofSize: 18.0, weight: .regular)
+        lbNoData.backgroundColor = UIColor.white
+        lbNoData.textColor = UIColor(red: 80/255.0, green: 80/255.0, blue: 80/255.0, alpha: 1.0)
+        lbNoData.mas_makeConstraints { (make:MASConstraintMaker?) in
+            make?.top.left()?.bottom()?.right()?.equalTo()(self)
+        }
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

@@ -126,7 +126,7 @@ class ChooseAccountTypePopupView: UIView, UITableViewDelegate, UITableViewDataSo
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return 3
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -142,11 +142,20 @@ class ChooseAccountTypePopupView: UIView, UITableViewDelegate, UITableViewDataSo
             }else{
                 cell.imgChoose.isHidden = true
             }
-        }else{
+        }else if indexPath.row == 1 {
             cell.imgType.image = UIImage(named: "ic_bank")
             cell.lbName.text = NSLocalizedString("Bank Account", comment: "")
             
             if curType == 2 {
+                cell.imgChoose.isHidden = false
+            }else{
+                cell.imgChoose.isHidden = true
+            }
+        }else{
+            cell.imgType.image = UIImage(named: "saving_account_bank")
+            cell.lbName.text = NSLocalizedString("Saving account", comment: "")
+            
+            if curType == 3 {
                 cell.imgChoose.isHidden = false
             }else{
                 cell.imgChoose.isHidden = true
@@ -160,8 +169,10 @@ class ChooseAccountTypePopupView: UIView, UITableViewDelegate, UITableViewDataSo
         self.fadeOut()
         if indexPath.row == 0 {
             curType = 1
-        }else{
+        }else if indexPath.row == 1 {
             curType = 2
+        }else{
+            curType = 3
         }
         delegate.selectAccountType(type: curType)
     }

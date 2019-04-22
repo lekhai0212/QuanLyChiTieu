@@ -11,6 +11,7 @@ import Masonry
 class OverviewViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var tbContent: UITableView!
+    var walletAccModel:WalletAccountModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +26,12 @@ class OverviewViewController: UIViewController, UITableViewDataSource, UITableVi
         
         self.setupUIForView()
     }
+    override func viewWillAppear(_ animated: Bool) {
+        if walletAccModel == nil {
+            walletAccModel = WalletAccountModel()
+        }
+        
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -33,12 +40,11 @@ class OverviewViewController: UIViewController, UITableViewDataSource, UITableVi
     
 
     func setupUIForView() {
+        self.edgesForExtendedLayout = []
+        
         tbContent.delegate = self
         tbContent.dataSource = self
         tbContent.separatorStyle = .none
-        let originY:CGFloat = UIApplication.shared.statusBarFrame.size.height + (self.navigationController?.navigationBar.frame.size.height)!
-        let tabHeight:CGFloat = (self.tabBarController?.tabBar.frame.size.height)!
-        
         
         let walletInfoNib = UINib(nibName: "WalletInfoCell", bundle: nil)
         let receiptAndExpenseNib = UINib(nibName: "ReceiptAndExpenseCell", bundle: nil)
@@ -47,15 +53,26 @@ class OverviewViewController: UIViewController, UITableViewDataSource, UITableVi
         tbContent.register(walletInfoNib, forCellReuseIdentifier: "WalletInfoCell")
         tbContent.register(receiptAndExpenseNib, forCellReuseIdentifier: "ReceiptAndExpenseCell")
         tbContent.register(actionNib, forCellReuseIdentifier: "ActionCell")
-        
+        tbContent.sectionHeaderHeight = UITableViewAutomaticDimension
+        tbContent.sectionFooterHeight = UITableViewAutomaticDimension
         tbContent.mas_makeConstraints { (make:MASConstraintMaker?) in
-            make?.top.equalTo()(self.view)?.offset()(originY)
-            make?.left.bottom().right().equalTo()(self.view)
-            make?.bottom.equalTo()(self.view)?.offset()(-tabHeight)
+            make?.top.left()?.bottom()?.right()?.equalTo()(self.view)
         }
     }
     
     //  MARK: UITableview delegate
+    func checkWalletAccountForCell(cell:WalletInfoCell) {
+        let walletAccModel:WalletAccountModel = WalletAccountModel()
+        let listAccount = walletAccModel.getWalletAccountList()
+        if listAccount.count > 0 {
+            var totalBalance:String =  walletAccModel.getTotalBalance()
+            totalBalance = StringsUtil.currencyFormatting(str: totalBalance)
+            cell.lbMoney.text = totalBalance
+        }else{
+            cell.lbMoney.text = "Bạn chưa có ví"
+        }
+    }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 3
     }
@@ -72,8 +89,10 @@ class OverviewViewController: UIViewController, UITableViewDataSource, UITableVi
         if indexPath.section == 0 {
             let identifier:String = "WalletInfoCell"
             let cell:WalletInfoCell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! WalletInfoCell
-            cell.lbMoney.text = "10.000.000 đ"
+            cell.selectionStyle = .none
+            self.checkWalletAccountForCell(cell: cell)
             cell.updateFrameForCell()
+            
             return cell
             
         }else if indexPath.section == 1 {
@@ -102,17 +121,12 @@ class OverviewViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 10.0
-    }
-    
-    func tableView(_ tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat {
-        return 1.0
+        return 0.1
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
         let headerView:UIView = UIView.init(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 40.0))
-        headerView.backgroundColor = UIColor.white
         
         let lbTitle:UILabel = UILabel(frame: CGRect(x: 10, y: 0, width: headerView.frame.size.width-20, height: headerView.frame.size.height))
         lbTitle.font = UIFont.systemFont(ofSize: 17.0, weight: .semibold)

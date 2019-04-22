@@ -22,8 +22,8 @@
                         <rect key="frame" x="48" y="5" width="33" height="33"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OOs-Wy-Cmy">
-                        <rect key="frame" x="95" y="11" width="209" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OOs-Wy-Cmy">
+                        <rect key="frame" x="95" y="11" width="199" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
@@ -41,15 +41,23 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="checked.png" translatesAutoresizingMaskIntoConstraints="NO" id="ZwF-zE-DuW">
+                        <rect key="frame" x="297" y="11" width="17" height="17"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    </imageView>
                 </subviews>
             </tableViewCellContentView>
             <connections>
                 <outlet property="imgArrow" destination="q3g-Jl-lna" id="xx4-F8-av7"/>
+                <outlet property="imgChecked" destination="ZwF-zE-DuW" id="ltD-L4-IRQ"/>
                 <outlet property="imgType" destination="XhL-ff-4As" id="fMr-bp-wKC"/>
                 <outlet property="lbName" destination="OOs-Wy-Cmy" id="Klu-Ho-uUn"/>
                 <outlet property="lbSepa" destination="8YA-jm-nzI" id="BJT-zk-LWp"/>
             </connections>
-            <point key="canvasLocation" x="-152" y="32"/>
+            <point key="canvasLocation" x="-322" y="-78"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="checked.png" width="128" height="128"/>
+    </resources>
 </document>

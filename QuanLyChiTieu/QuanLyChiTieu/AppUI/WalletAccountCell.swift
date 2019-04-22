@@ -15,6 +15,7 @@ class WalletAccountCell: UITableViewCell {
     @IBOutlet weak var lbMoney: UILabel!
     @IBOutlet weak var icMore: UIButton!
     @IBOutlet weak var lbSepa: UILabel!
+    @IBOutlet weak var imgChecked: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -36,6 +37,12 @@ class WalletAccountCell: UITableViewCell {
             make?.right.equalTo()(self)?.offset()(-5.0)
             make?.centerY.equalTo()(self.mas_centerY)
             make?.width.height().mas_equalTo()(35.0)
+        }
+        
+        imgChecked.mas_makeConstraints { (make:MASConstraintMaker?) in
+            make?.right.equalTo()(self)?.offset()(-5.0)
+            make?.centerY.equalTo()(self.mas_centerY)
+            make?.width.height().mas_equalTo()(18.0)
         }
         
         lbName.textColor = UIColor(red: 80/255.0, green: 80/255.0, blue: 80/255.0, alpha: 1.0)

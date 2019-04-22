@@ -11,6 +11,7 @@ import Masonry
 
 class ActionViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, SelectCategoryViewControllerDelegate, SelectAccountViewControllerDelegate {
 
+    @IBOutlet weak var tbTransfer: UITableView!
     @IBOutlet weak var tbContent: UITableView!
     var curAction:ActionMenuObj!
     var walletAccModel:WalletAccountModel!
@@ -42,45 +43,41 @@ class ActionViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         let tapOnTitle:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(whenTapOnTitle))
         lbTitle.addGestureRecognizer(tapOnTitle)
-        
-        //  create table
-        typeAction = 0
-        
-        tbTypeAction = UITableView()
-        tbTypeAction.sectionHeaderHeight = UITableViewAutomaticDimension
-        tbTypeAction.sectionFooterHeight = UITableViewAutomaticDimension
-        tbTypeAction.separatorStyle = .none
-        tbTypeAction.isScrollEnabled = false
-        
-        let nibCell = UINib(nibName: "SelectAccountCell", bundle: nil)
-        tbTypeAction.register(nibCell, forCellReuseIdentifier: "SelectAccountCell")
-        tbTypeAction.delegate = self
-        tbTypeAction.dataSource = self
-        self.view.addSubview(tbTypeAction)
-        tbTypeAction.mas_makeConstraints { (make:MASConstraintMaker?) in
-            make?.top.left().right().equalTo()(self.view)
-            make?.height.mas_equalTo()(0)
-        }
     }
     
-    @objc func whenTapOnTitle() {
-        if tbTypeAction.frame.size.height == 0 {
-            
-            let attrStr:NSAttributedString = StringsUtil.createAttributedText(text: "Chi tiền  ", image: UIImage(named: "arrow_down")!, size: 14.0)
-            lbTitle.attributedText
-            tbTypeAction.mas_remakeConstraints { (make:MASConstraintMaker?) in
-                make?.top.left().right().equalTo()(self.view)
-                make?.height.mas_equalTo()(50*3)
-            }
-        }else{
+    func closeChooseActionTableView(closed:Bool) {
+        if closed {
             tbTypeAction.mas_remakeConstraints { (make:MASConstraintMaker?) in
                 make?.top.left().right().equalTo()(self.view)
                 make?.height.mas_equalTo()(0)
+            }
+        }else {
+            tbTypeAction.mas_remakeConstraints { (make:MASConstraintMaker?) in
+                make?.top.left()?.bottom().right().equalTo()(self.view)
             }
         }
         UIView.animate(withDuration: 0.2) {
             self.view.layoutIfNeeded()
         }
+    }
+    
+    @objc func whenTapOnTitle() {
+        var closed:Bool = true
+        var content:String
+        var image:UIImage
+        
+        if tbTypeAction.frame.size.height == 0 {
+            image = UIImage(named: "arrow_up")!
+            closed = false
+        }else{
+            image = UIImage(named: "arrow_down")!
+        }
+        
+        content = self.getContentWithTypeAction(actionType: typeAction)
+        let attrStr:NSAttributedString = StringsUtil.createAttributedText(text:content, image: image, size: 14.0)
+        lbTitle.attributedText = attrStr
+        
+        self.closeChooseActionTableView(closed: closed)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -116,12 +113,46 @@ class ActionViewController: UIViewController, UITableViewDelegate, UITableViewDa
         tbContent.mas_makeConstraints { (make:MASConstraintMaker?) in
             make?.top.left()?.bottom().right()?.equalTo()(self.view)
         }
+        
+        //  transfer tableview
+        let nibTransferCell = UINib(nibName: "AccountTransferCell", bundle: nil)
+        tbTransfer.register(nibTransferCell, forCellReuseIdentifier: "AccountTransferCell")
+        tbTransfer.sectionHeaderHeight = UITableViewAutomaticDimension
+        tbTransfer.sectionFooterHeight = UITableViewAutomaticDimension
+        tbTransfer.separatorStyle = .none
+        tbTransfer.delegate = self
+        tbTransfer.dataSource = self
+        tbTransfer.mas_makeConstraints { (make:MASConstraintMaker?) in
+            make?.top.left()?.bottom()?.right()?.equalTo()(self.tbContent)
+        }
+        
+        //  create table
+        typeAction = 0
+        
+        tbTypeAction = UITableView()
+        tbTypeAction.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.2)
+        tbTypeAction.sectionHeaderHeight = UITableViewAutomaticDimension
+        tbTypeAction.sectionFooterHeight = UITableViewAutomaticDimension
+        tbTypeAction.separatorStyle = .none
+        tbTypeAction.isScrollEnabled = false
+        
+        let nibCell = UINib(nibName: "SelectAccountCell", bundle: nil)
+        tbTypeAction.register(nibCell, forCellReuseIdentifier: "SelectAccountCell")
+        tbTypeAction.delegate = self
+        tbTypeAction.dataSource = self
+        self.view.addSubview(tbTypeAction)
+        tbTypeAction.mas_makeConstraints { (make:MASConstraintMaker?) in
+            make?.top.left().right().equalTo()(self.view)
+            make?.height.mas_equalTo()(0)
+        }
     }
     
     //  MARK: Tableview
     func numberOfSections(in tableView: UITableView) -> Int {
         if tableView == tbTypeAction {
             return 1
+        }else if tableView == tbTransfer {
+            return 3
         }else {
             return 2
         }
@@ -130,6 +161,12 @@ class ActionViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView == tbTypeAction {
             return 3
+        }else if tableView == tbTransfer {
+            if section == 0 {
+                return 1
+            }else {
+                return 2
+            }
         }else{
             if section == 0 {
                 return 1
@@ -241,8 +278,10 @@ class ActionViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if tableView == tbTypeAction {
             typeAction = indexPath.row
-            sssss
-            
+            let content = self.getContentWithTypeAction(actionType: typeAction)
+            let attrStr:NSAttributedString = StringsUtil.createAttributedText(text:content, image: UIImage(named: "arrow_down")!, size: 14.0)
+            lbTitle.attributedText = attrStr
+            self.closeChooseActionTableView(closed: true)
         }else{
             if indexPath.section == 1 && indexPath.row == 0 {
                 
@@ -268,7 +307,7 @@ class ActionViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if tableView == tbTypeAction {
-            return 50.0
+            return 60.0
         }else{
             if indexPath.section == 0 {
                 return 95.0
@@ -301,6 +340,12 @@ class ActionViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func getContentWithTypeAction(actionType:Int) -> String {
-        
+        if actionType == 0 {
+            return "Chi tiền  "
+        }else if actionType == 1 {
+            return "Thu tiền  "
+        }else{
+            return "Chuyển khoản  "
+        }
     }
 }

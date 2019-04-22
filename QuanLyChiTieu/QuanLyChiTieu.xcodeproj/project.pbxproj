@@ -84,6 +84,8 @@
 		15EF1E86226DCF1300D4DD6A /* plus.png in Resources */ = {isa = PBXBuildFile; fileRef = 15EF1E83226DCF0F00D4DD6A /* plus.png */; };
 		15EF1E87226DCF1300D4DD6A /* transfer.png in Resources */ = {isa = PBXBuildFile; fileRef = 15EF1E84226DCF1100D4DD6A /* transfer.png */; };
 		15EF1E88226DCF1300D4DD6A /* minus.png in Resources */ = {isa = PBXBuildFile; fileRef = 15EF1E85226DCF1300D4DD6A /* minus.png */; };
+		8438319C226E77D100B849FB /* AccountTransferCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8438319A226E77D100B849FB /* AccountTransferCell.swift */; };
+		8438319D226E77D100B849FB /* AccountTransferCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8438319B226E77D100B849FB /* AccountTransferCell.xib */; };
 		843E38D8225E3E4A0044610A /* ChooseAccountTypePopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843E38D7225E3E4A0044610A /* ChooseAccountTypePopupView.swift */; };
 		843E38DC225E43160044610A /* AccountTypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843E38DA225E43160044610A /* AccountTypeCell.swift */; };
 		843E38DD225E43160044610A /* AccountTypeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 843E38DB225E43160044610A /* AccountTypeCell.xib */; };
@@ -240,6 +242,8 @@
 		15EF1E83226DCF0F00D4DD6A /* plus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plus.png; sourceTree = "<group>"; };
 		15EF1E84226DCF1100D4DD6A /* transfer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = transfer.png; sourceTree = "<group>"; };
 		15EF1E85226DCF1300D4DD6A /* minus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = minus.png; sourceTree = "<group>"; };
+		8438319A226E77D100B849FB /* AccountTransferCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTransferCell.swift; sourceTree = "<group>"; };
+		8438319B226E77D100B849FB /* AccountTransferCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountTransferCell.xib; sourceTree = "<group>"; };
 		843E38D7225E3E4A0044610A /* ChooseAccountTypePopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseAccountTypePopupView.swift; sourceTree = "<group>"; };
 		843E38DA225E43160044610A /* AccountTypeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTypeCell.swift; sourceTree = "<group>"; };
 		843E38DB225E43160044610A /* AccountTypeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountTypeCell.xib; sourceTree = "<group>"; };
@@ -352,6 +356,8 @@
 				84AD99D32264547D00BA8ECE /* ActionMenuCell.xib */,
 				15EF1E7F226DB5BE00D4DD6A /* SelectAccountCell.swift */,
 				15EF1E80226DB5BE00D4DD6A /* SelectAccountCell.xib */,
+				8438319A226E77D100B849FB /* AccountTransferCell.swift */,
+				8438319B226E77D100B849FB /* AccountTransferCell.xib */,
 			);
 			path = AppUI;
 			sourceTree = "<group>";
@@ -701,6 +707,7 @@
 				843E38DD225E43160044610A /* AccountTypeCell.xib in Resources */,
 				84AD9A3522647BB300BA8ECE /* baby_supplies.png in Resources */,
 				84AD99EC2264651400BA8ECE /* mobile_phone.png in Resources */,
+				8438319D226E77D100B849FB /* AccountTransferCell.xib in Resources */,
 				15ADD247225B2BAC00A8F3CE /* ic_email.png in Resources */,
 				84AD99D822645B6F00BA8ECE /* arrow_down_gray.png in Resources */,
 				1574B46722608D1E00904619 /* tabbar_saving@2x.png in Resources */,
@@ -792,6 +799,7 @@
 				153A25DB225DE47000BEBD39 /* CreateAccountViewController.swift in Sources */,
 				15ADD22F225AFFA700A8F3CE /* SignInViewController.swift in Sources */,
 				84F3634A226C4794005E48D9 /* SelectAccountViewController.swift in Sources */,
+				8438319C226E77D100B849FB /* AccountTransferCell.swift in Sources */,
 				153A25E2225DF39000BEBD39 /* BalanceCell.swift in Sources */,
 				15214202225F51A800ACD6D3 /* WalletAccountObj.swift in Sources */,
 				1588698C225C5098000FC0E5 /* AccountModel.swift in Sources */,

@@ -13,7 +13,7 @@ class CustomTextAttachment: NSTextAttachment {
     
     override func attachmentBounds(for textContainer: NSTextContainer?, proposedLineFragment lineFrag: CGRect, glyphPosition position: CGPoint, characterIndex charIndex: Int) -> CGRect {
         var bounds:CGRect = CGRect.zero
-        bounds.origin = CGPoint(x: 0, y: -4.5)
+        bounds.origin = CGPoint(x: 0, y: -3.0)
         bounds.size = CGSize(width: imgHeight, height: imgHeight)
         return bounds
     }

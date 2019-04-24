@@ -84,6 +84,7 @@
 		15EF1E86226DCF1300D4DD6A /* plus.png in Resources */ = {isa = PBXBuildFile; fileRef = 15EF1E83226DCF0F00D4DD6A /* plus.png */; };
 		15EF1E87226DCF1300D4DD6A /* transfer.png in Resources */ = {isa = PBXBuildFile; fileRef = 15EF1E84226DCF1100D4DD6A /* transfer.png */; };
 		15EF1E88226DCF1300D4DD6A /* minus.png in Resources */ = {isa = PBXBuildFile; fileRef = 15EF1E85226DCF1300D4DD6A /* minus.png */; };
+		840C4F4C2271287900706CFA /* question_gray.png in Resources */ = {isa = PBXBuildFile; fileRef = 840C4F4B2271287700706CFA /* question_gray.png */; };
 		8438319C226E77D100B849FB /* AccountTransferCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8438319A226E77D100B849FB /* AccountTransferCell.swift */; };
 		8438319D226E77D100B849FB /* AccountTransferCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8438319B226E77D100B849FB /* AccountTransferCell.xib */; };
 		843E38D8225E3E4A0044610A /* ChooseAccountTypePopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843E38D7225E3E4A0044610A /* ChooseAccountTypePopupView.swift */; };
@@ -151,6 +152,12 @@
 		84BD2DB2225EB67F00F72238 /* WalletAccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BD2DB1225EB67F00F72238 /* WalletAccountModel.swift */; };
 		84C2214A225D691600C4ECFE /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C22149225D691600C4ECFE /* HomeViewController.swift */; };
 		84C508CC226367CA002E592C /* ActionMenuObj.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C508CB226367CA002E592C /* ActionMenuObj.swift */; };
+		84EA4C362270B34400479389 /* TransferFeeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EA4C342270B34400479389 /* TransferFeeCell.swift */; };
+		84EA4C372270B34400479389 /* TransferFeeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84EA4C352270B34400479389 /* TransferFeeCell.xib */; };
+		84EA4C3A2270B83800479389 /* TransferFooterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EA4C382270B83800479389 /* TransferFooterCell.swift */; };
+		84EA4C3B2270B83800479389 /* TransferFooterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84EA4C392270B83800479389 /* TransferFooterCell.xib */; };
+		84EA4C3E2270BA4C00479389 /* camera.png in Resources */ = {isa = PBXBuildFile; fileRef = 84EA4C3C2270BA4B00479389 /* camera.png */; };
+		84EA4C3F2270BA4C00479389 /* picture.png in Resources */ = {isa = PBXBuildFile; fileRef = 84EA4C3D2270BA4C00479389 /* picture.png */; };
 		84F36344226C2C63005E48D9 /* checked.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F36343226C2C62005E48D9 /* checked.png */; };
 		84F36346226C303F005E48D9 /* saving_account_bank.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F36345226C303E005E48D9 /* saving_account_bank.png */; };
 		84F36348226C45E0005E48D9 /* sad_face.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F36347226C45DF005E48D9 /* sad_face.png */; };
@@ -242,6 +249,7 @@
 		15EF1E83226DCF0F00D4DD6A /* plus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plus.png; sourceTree = "<group>"; };
 		15EF1E84226DCF1100D4DD6A /* transfer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = transfer.png; sourceTree = "<group>"; };
 		15EF1E85226DCF1300D4DD6A /* minus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = minus.png; sourceTree = "<group>"; };
+		840C4F4B2271287700706CFA /* question_gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = question_gray.png; sourceTree = "<group>"; };
 		8438319A226E77D100B849FB /* AccountTransferCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTransferCell.swift; sourceTree = "<group>"; };
 		8438319B226E77D100B849FB /* AccountTransferCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountTransferCell.xib; sourceTree = "<group>"; };
 		843E38D7225E3E4A0044610A /* ChooseAccountTypePopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseAccountTypePopupView.swift; sourceTree = "<group>"; };
@@ -311,6 +319,12 @@
 		84C22145225D688D00C4ECFE /* QuanLyChiTieu-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "QuanLyChiTieu-Bridging-Header.h"; sourceTree = "<group>"; };
 		84C22149225D691600C4ECFE /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		84C508CB226367CA002E592C /* ActionMenuObj.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionMenuObj.swift; sourceTree = "<group>"; };
+		84EA4C342270B34400479389 /* TransferFeeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferFeeCell.swift; sourceTree = "<group>"; };
+		84EA4C352270B34400479389 /* TransferFeeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TransferFeeCell.xib; sourceTree = "<group>"; };
+		84EA4C382270B83800479389 /* TransferFooterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferFooterCell.swift; sourceTree = "<group>"; };
+		84EA4C392270B83800479389 /* TransferFooterCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TransferFooterCell.xib; sourceTree = "<group>"; };
+		84EA4C3C2270BA4B00479389 /* camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera.png; sourceTree = "<group>"; };
+		84EA4C3D2270BA4C00479389 /* picture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = picture.png; sourceTree = "<group>"; };
 		84F36343226C2C62005E48D9 /* checked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checked.png; sourceTree = "<group>"; };
 		84F36345226C303E005E48D9 /* saving_account_bank.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = saving_account_bank.png; sourceTree = "<group>"; };
 		84F36347226C45DF005E48D9 /* sad_face.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sad_face.png; sourceTree = "<group>"; };
@@ -358,6 +372,10 @@
 				15EF1E80226DB5BE00D4DD6A /* SelectAccountCell.xib */,
 				8438319A226E77D100B849FB /* AccountTransferCell.swift */,
 				8438319B226E77D100B849FB /* AccountTransferCell.xib */,
+				84EA4C342270B34400479389 /* TransferFeeCell.swift */,
+				84EA4C352270B34400479389 /* TransferFeeCell.xib */,
+				84EA4C382270B83800479389 /* TransferFooterCell.swift */,
+				84EA4C392270B83800479389 /* TransferFooterCell.xib */,
 			);
 			path = AppUI;
 			sourceTree = "<group>";
@@ -480,6 +498,7 @@
 				84BD2DAE225EACD900F72238 /* description.png */,
 				152141FF225F4E7E00ACD6D3 /* more_vertical.png */,
 				15E6816D22617E9E002D2211 /* question.png */,
+				840C4F4B2271287700706CFA /* question_gray.png */,
 				15E6819122617FEF002D2211 /* calendar.png */,
 				15E6819222617FF0002D2211 /* three_line_blue.png */,
 				84AD99DA2264613F00BA8ECE /* bars_and_coffee.png */,
@@ -543,6 +562,8 @@
 				15EF1E85226DCF1300D4DD6A /* minus.png */,
 				15EF1E83226DCF0F00D4DD6A /* plus.png */,
 				15EF1E84226DCF1100D4DD6A /* transfer.png */,
+				84EA4C3C2270BA4B00479389 /* camera.png */,
+				84EA4C3D2270BA4C00479389 /* picture.png */,
 			);
 			path = images;
 			sourceTree = "<group>";
@@ -627,6 +648,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84EA4C3E2270BA4C00479389 /* camera.png in Resources */,
 				84AD9A102264720500BA8ECE /* clothing.png in Resources */,
 				153A25DD225DE6F800BEBD39 /* add_white.png in Resources */,
 				84AD99FE22646DBD00BA8ECE /* car_wash.png in Resources */,
@@ -641,6 +663,7 @@
 				84AD9A222264754D00BA8ECE /* health_and_fitness.png in Resources */,
 				84AD99D922645B6F00BA8ECE /* arrow_up_gray.png in Resources */,
 				153A25F3225E065C00BEBD39 /* ic_bank.png in Resources */,
+				84EA4C3F2270BA4C00479389 /* picture.png in Resources */,
 				153A25C3225DA2AE00BEBD39 /* tabbar_more.png in Resources */,
 				1574B46022608C8900904619 /* tabbar_add@2x.png in Resources */,
 				84AD9A3722647BB300BA8ECE /* home_services.png in Resources */,
@@ -679,6 +702,7 @@
 				84AD99F02264651400BA8ECE /* hiring_maids.png in Resources */,
 				153A25BE225DA0E100BEBD39 /* tabbar_wallet.png in Resources */,
 				84AD9A0D2264720500BA8ECE /* travel.png in Resources */,
+				840C4F4C2271287900706CFA /* question_gray.png in Resources */,
 				84AD9A43226485E900BA8ECE /* service_and_parts.png in Resources */,
 				153A25BF225DA0E100BEBD39 /* tabbar_wallet@3x.png in Resources */,
 				84AD99FF22646DBD00BA8ECE /* repair_vehicles.png in Resources */,
@@ -712,6 +736,7 @@
 				84AD99D822645B6F00BA8ECE /* arrow_down_gray.png in Resources */,
 				1574B46722608D1E00904619 /* tabbar_saving@2x.png in Resources */,
 				153A25E8225DF92F00BEBD39 /* AmountDetailCell.xib in Resources */,
+				84EA4C372270B34400479389 /* TransferFeeCell.xib in Resources */,
 				84AD9A092264720500BA8ECE /* clothes.png in Resources */,
 				84AD9A3B22647BB300BA8ECE /* furnishing.png in Resources */,
 				153A25BD225DA0E100BEBD39 /* tabbar_wallet@2x.png in Resources */,
@@ -738,6 +763,7 @@
 				84AD9A1D2264754D00BA8ECE /* marriages.png in Resources */,
 				84AD9A3922647BB300BA8ECE /* tuition.png in Resources */,
 				84AD99FC22646DBD00BA8ECE /* auto_and_transport.png in Resources */,
+				84EA4C3B2270B83800479389 /* TransferFooterCell.xib in Resources */,
 				84AD9A3322647BB300BA8ECE /* home.png in Resources */,
 				15886986225C3D79000FC0E5 /* pass_show.png in Resources */,
 				84AD99F922646DBD00BA8ECE /* sevice_and_parts.png in Resources */,
@@ -817,12 +843,14 @@
 				153A25A4225D959A00BEBD39 /* OverviewViewController.swift in Sources */,
 				153A25CB225DAE4600BEBD39 /* WalletInfoCell.swift in Sources */,
 				84C2214A225D691600C4ECFE /* HomeViewController.swift in Sources */,
+				84EA4C362270B34400479389 /* TransferFeeCell.swift in Sources */,
 				15ADD21A225AFD4300A8F3CE /* AppDelegate.swift in Sources */,
 				1574B45B22608B6400904619 /* ActionViewController.swift in Sources */,
 				84C508CC226367CA002E592C /* ActionMenuObj.swift in Sources */,
 				153A25A6225D961400BEBD39 /* AccountViewController.swift in Sources */,
 				15EF1E81226DB5BE00D4DD6A /* SelectAccountCell.swift in Sources */,
 				153A25EB225DF94200BEBD39 /* AmoutDetailDescCell.swift in Sources */,
+				84EA4C3A2270B83800479389 /* TransferFooterCell.swift in Sources */,
 				15EF1E7B226DA2E700D4DD6A /* CustomTextAttachment.swift in Sources */,
 				153A25D8225DD6D900BEBD39 /* ActionCell.swift in Sources */,
 			);

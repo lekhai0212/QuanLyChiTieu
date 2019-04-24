@@ -16,6 +16,7 @@ class ActionViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var curAction:ActionMenuObj!
     var walletAccModel:WalletAccountModel!
     var selectedAcc:WalletAccountObj!
+    var transferAcc:WalletAccountObj!
     var listAccount:Array<Any>!
     var tbTypeAction:UITableView!
     var typeAction:Int!
@@ -116,7 +117,16 @@ class ActionViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         //  transfer tableview
         let nibTransferCell = UINib(nibName: "AccountTransferCell", bundle: nil)
+        let nibTransferFeeCell = UINib(nibName: "TransferFeeCell", bundle: nil)
+        let nibFooterCell = UINib(nibName: "TransferFooterCell", bundle: nil)
+        
+        tbTransfer.isHidden = true
         tbTransfer.register(nibTransferCell, forCellReuseIdentifier: "AccountTransferCell")
+        tbTransfer.register(nibTransferFeeCell, forCellReuseIdentifier: "TransferFeeCell")
+        tbTransfer.register(nibBalance, forCellReuseIdentifier: "BalanceCell")
+        tbTransfer.register(nibDetail, forCellReuseIdentifier: "AmountDetailCell")
+        tbTransfer.register(nibFooterCell, forCellReuseIdentifier: "TransferFooterCell")
+        
         tbTransfer.sectionHeaderHeight = UITableViewAutomaticDimension
         tbTransfer.sectionFooterHeight = UITableViewAutomaticDimension
         tbTransfer.separatorStyle = .none
@@ -152,7 +162,7 @@ class ActionViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if tableView == tbTypeAction {
             return 1
         }else if tableView == tbTransfer {
-            return 3
+            return 5
         }else {
             return 2
         }
@@ -162,10 +172,12 @@ class ActionViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if tableView == tbTypeAction {
             return 3
         }else if tableView == tbTransfer {
-            if section == 0 {
-                return 1
-            }else {
+            if section == 1 {
                 return 2
+            }else if section == 2 {
+                return 3
+            }else {
+                return 1
             }
         }else{
             if section == 0 {
@@ -200,6 +212,58 @@ class ActionViewController: UIViewController, UITableViewDelegate, UITableViewDa
             }
             
             return cell
+        }else if tableView == tbTransfer {
+            if indexPath.section == 0 {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "BalanceCell", for: indexPath) as! BalanceCell
+                cell.selectionStyle = .none
+                cell.lbAmount.text = "Số tiền"
+                
+                return cell
+                
+            }else if indexPath.section == 1 {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "AccountTransferCell", for: indexPath) as! AccountTransferCell
+                cell.selectionStyle = .none
+                if indexPath.row == 0 {
+                    if selectedAcc != nil {
+                        cell.lbName.text = selectedAcc.accountName
+                        cell.imgType.image = self.getImageAccountWithType(type: selectedAcc.accountType)
+                    }else{
+                        cell.lbName.text = "Chưa có"
+                        cell.imgType.image = UIImage(named: "question_gray")
+                    }
+                }else{
+                    if transferAcc != nil {
+                        cell.lbName.text = transferAcc.accountName
+                        cell.imgType.image = self.getImageAccountWithType(type: transferAcc.accountType)
+                    }else{
+                        cell.lbName.text = "Chưa chọn"
+                        cell.imgType.image = UIImage(named: "question_gray")
+                    }
+                }
+                
+                return cell
+                
+            }else if indexPath.section == 2 {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "AmountDetailCell", for: indexPath) as! AmountDetailCell
+                cell.selectionStyle = .none
+                cell.setupCellWithLargeIcon(large: true)
+                cell.tfContent.isEnabled = false
+                
+                return cell
+                
+            }else if indexPath.section == 3{
+                let cell = tableView.dequeueReusableCell(withIdentifier: "TransferFeeCell", for: indexPath) as! TransferFeeCell
+                cell.selectionStyle = .none
+                cell.lbMoney.text = "Số tiền"
+                
+                return cell
+                
+            }else{
+                let cell = tableView.dequeueReusableCell(withIdentifier: "TransferFooterCell", for: indexPath) as! TransferFooterCell
+                
+                return cell
+            }
+            
         }else{
             if indexPath.section == 0 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "BalanceCell", for: indexPath) as! BalanceCell
@@ -252,14 +316,7 @@ class ActionViewController: UIViewController, UITableViewDelegate, UITableViewDa
                         cell.imgArrow.isHidden = false
                     }else{
                         cell.tfContent.text = selectedAcc.accountName
-                        if selectedAcc.accountType == 1 {
-                            cell.imgType.image = UIImage(named: "ic_money")
-                            
-                        }else if selectedAcc.accountType == 2 {
-                            cell.imgType.image = UIImage(named: "ic_bank")
-                        }else{
-                            cell.imgType.image = UIImage(named: "saving_account_bank")
-                        }
+                        cell.imgType.image = self.getImageAccountWithType(type: selectedAcc.accountType)
                         cell.imgArrow.isHidden = false
                     }
                     
@@ -282,6 +339,32 @@ class ActionViewController: UIViewController, UITableViewDelegate, UITableViewDa
             let attrStr:NSAttributedString = StringsUtil.createAttributedText(text:content, image: UIImage(named: "arrow_down")!, size: 14.0)
             lbTitle.attributedText = attrStr
             self.closeChooseActionTableView(closed: true)
+            
+            if typeAction == 0 {
+                tbTransfer.isHidden = true
+                tbContent.isHidden = false
+                
+            }else {
+                tbTransfer.isHidden = false
+                tbContent.isHidden = true
+            }
+            
+        }else if tableView == tbTransfer {
+            let selectAccVC = UIStoryboard.init(name: "Main", bundle:
+                Bundle.main).instantiateViewController(withIdentifier: "SelectAccountViewController") as! SelectAccountViewController
+            selectAccVC.delegate = self
+            selectAccVC.hidesBottomBarWhenPushed = true
+            if indexPath.row == 0 {
+                if selectedAcc != nil {
+                    selectAccVC.selectedAcc = selectedAcc
+                }
+            }else if indexPath.row == 1 {
+                if transferAcc != nil {
+                    selectAccVC.selectedAcc = transferAcc
+                }
+            }
+            self.navigationController?.pushViewController(selectAccVC, animated: true)
+            
         }else{
             if indexPath.section == 1 && indexPath.row == 0 {
                 
@@ -346,6 +429,17 @@ class ActionViewController: UIViewController, UITableViewDelegate, UITableViewDa
             return "Thu tiền  "
         }else{
             return "Chuyển khoản  "
+        }
+    }
+    
+    func getImageAccountWithType(type:Int) -> UIImage {
+        if type == 1 {
+            return UIImage(named: "ic_money")!
+            
+        }else if type == 2 {
+            return UIImage(named: "ic_bank")!
+        }else{
+            return UIImage(named: "saving_account_bank")!
         }
     }
 }

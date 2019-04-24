@@ -15,6 +15,7 @@ class AccountTransferCell: UITableViewCell {
     @IBOutlet weak var lbTitle: UILabel!
     @IBOutlet weak var lbName: UILabel!
     @IBOutlet weak var imgArrow: UIImageView!
+    @IBOutlet weak var lbSepa: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -46,6 +47,12 @@ class AccountTransferCell: UITableViewCell {
             make?.left.right().equalTo()(lbTitle)
             make?.top.equalTo()(self.mas_centerY)
             make?.bottom.equalTo()(self)?.offset()(-10.0)
+        }
+        
+        lbSepa.backgroundColor = UIColor(red: (240/255.0), green: (240/255.0), blue: (240/255.0), alpha: 1.0)
+        lbSepa.mas_makeConstraints { (make:MASConstraintMaker?) in
+            make?.bottom.left().right().equalTo()(lbTitle)
+            make?.height.mas_equalTo()(1.0)
         }
     }
 
